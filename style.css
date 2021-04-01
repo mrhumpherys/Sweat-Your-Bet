@@ -69,9 +69,9 @@ img {
     content: "";
     position: absolute;
     z-index: -1;
-    -webkit-box-shadow: 0 0 20px rgba(0,236,148, 0.8);
-    -moz-box-shadow: 0 0 20px rgba(0,236,148, 0.8);
-    box-shadow: 0 0 20px rgba(0,236,148, 0.8);
+    -webkit-box-shadow: 0 0 20px rgba(0, 236, 148, 0.8);
+    -moz-box-shadow: 0 0 20px rgba(0, 236, 148, 0.8);
+    box-shadow: 0 0 20px rgba(0, 236, 148, 0.8);
     top: 0;
     bottom: 0;
     left: 10px;
@@ -101,7 +101,6 @@ img {
 .newsHead {
     color: whitesmoke;
     margin-left: 13px;
-    
 }
 
 .newsTitle {
@@ -110,7 +109,7 @@ img {
 
 .imgBackground {
     padding: 5px;
-    background-color: rgb(197, 197, 197,.5);
+    background-color: rgb(197, 197, 197, .5);
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     min-height: 10vh;
@@ -138,8 +137,15 @@ img {
 .Border {
     padding: 5px;
     margin: 5px;
-    border:  2px solid var(--black);
+    border: 2px solid var(--black);
     border-radius: 10px;
 }
 
+/* NES END */
 
+/* GAMES START */
+.gameHead {
+    color: whitesmoke;
+    margin-right: 45px;
+    
+}
