@@ -32,33 +32,28 @@ img {
 
 .logoContainer {
     height: 20vh;
+    margin-top: 25px;;
 }
 
 .navbar {
-    height: 40vh;
+    height: 60vh;
     overflow: hidden;
 }
 
 .nav-link {
     color: var(--green);
     font-size: 1.2rem;
+    border-bottom: 1px solid var(--grey);
 }
 
 .nav-link:hover {
     color: whitesmoke;
 }
 
-.navItem {
-    border-bottom: 1px solid var(--grey);
-    height: .1rem;
-}
 
-.nav1 {
-    border-top: 1px solid var(--grey);
-}
 
 .divSpace {
-    height: 40vh;
+    height: 20vh;
 }
 
 /* END NAV */
