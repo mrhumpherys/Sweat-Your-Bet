@@ -1,3 +1,4 @@
+const teams = [];
 /*
 CREATE TABLE Team (
 	id INTEGER AUTO_INCREMENT,
