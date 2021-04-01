@@ -107,8 +107,8 @@ img {
     background-color: rgb(197, 197, 197, .5);
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
-    min-height: 10vh;
-    max-height: 10vh;
+    height: 10vh;
+    
 }
 
 .card-text {
