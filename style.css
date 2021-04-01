@@ -94,6 +94,7 @@ img {
     margin: 10px;
 }
 
+
 .newsHead {
     color: whitesmoke;
     margin-left: 13px;
@@ -105,7 +106,7 @@ img {
 
 .imgBackground {
     padding: 15px;
-    background-color: rgb(197, 197, 197, .5);
+    background-color: rgba(214, 213, 213, 0.507);
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     min-height: 5rem;
@@ -114,9 +115,12 @@ img {
 
 .card-text {
     margin-top: 5px;
+    padding-top: 7px;
     height: 10vh;
     font-size: smaller;
     overflow: hidden;
+    border-bottom: 1px solid var(--grey);
+    border-top: 1px solid var(--grey);
 }
 
 .news-btn {
