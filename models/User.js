@@ -38,35 +38,14 @@ User.init(
       unique: true,
       validate: {
         isEmail: true,
-      }
-    },
-    wallet: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        isAlphanumeric: true,
-      }
-    },
-    userWins: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        isAlphanumeric: true,
-      }
-    },
-    userLosses: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        isAlphanumeric: true,
-      }
+      },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [4],
-      }
+      },
     },
   },
   {

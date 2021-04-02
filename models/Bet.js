@@ -17,3 +17,80 @@ CREATE TABLE Bet (
 
 */
 //! TODO
+
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
+
+class Bet extends Model {}
+
+Bet.init({
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  hostID: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+    references: {
+      model: "user",
+      key: "id",
+    },
+  },
+  challengerID: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+    references: {
+      model: "user",
+      key: "id",
+    },
+  },
+  wager: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  hostWon: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  gameID: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+    references: {
+      model: "game",
+      key: "GameID",
+    },
+  },
+  pickTeamID: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+    references: {
+      model: "team",
+      key: "id",
+    },
+  },
+  win: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    unique: true,
+    references: {
+      model: true,
+    },
+  },
+  sequelize,
+  timestamps: false,
+  freezeTableName: true,
+  underscored: true,
+  modelName: "bet",
+});
+
+module.exports = Bet;
