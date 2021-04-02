@@ -19,6 +19,7 @@ img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    
 }
 
 .dynamicContainer {
@@ -98,19 +99,22 @@ img {
 .newsHead {
     color: whitesmoke;
     margin-left: 13px;
+    text-shadow: 1px 1px 1px #000;
 }
 
 .newsTitle {
     color: whitesmoke;
+    text-shadow: 1px 1px 1px #000;
 }
 
 .imgBackground {
     padding: 15px;
-    background-color: rgba(214, 213, 213, 0.507);
+    background-color: var(--grey);
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     min-height: 5rem;
     max-height: 8rem;
+    border: .75px solid var(--dGreen);
 }
 
 .card-text {
@@ -141,11 +145,41 @@ img {
     border-radius: 10px;
 }
 
-/* NES END */
+/* NEWS END */
 
 /* GAMES START */
 
-.gameHead {
-    color: whitesmoke;
-    margin-right: 45px;
+.game-card{
+    border: 2px solid rgba(0, 236, 148, 0.8);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    overflow: hidden;
 }
+
+.game-card-body{
+    border-bottom: 1px solid var(--grey);
+    border-top: 1px solid rgba(0, 236, 148, 0.8);
+    background-color: rgba(40,48,54, 0.6);
+    color: whitesmoke;
+    text-shadow: 1px 1px 1px #000;
+    overflow: hidden;
+}
+.game-actBet-btn{
+    border: .75px solid var(--dGreen);
+    padding: 5px;
+}
+
+.game-btn-ctnr {
+    padding: 0;
+}
+.game-btn-ctnr:active {
+    border: 0;
+}
+/* .teams{
+    font-size: smaller;
+}
+
+.time{
+    font-size: smaller;
+} */
