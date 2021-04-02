@@ -34,4 +34,4 @@ Stats.init({
   modelName: "user",
 });
 
-module.exports = UserStats;
+module.exports = Stats;
