@@ -159,8 +159,7 @@ img {
 
 .game-card-body{
     border-bottom: 1px solid var(--grey);
-    border-top: 1px solid rgba(0, 236, 148, 0.8);
-    background-color: rgba(40,48,54, 0.6);
+    border-top: 1px solid rgba(0, 236, 148, 0.8);;
     color: whitesmoke;
     text-shadow: 1px 1px 1px #000;
     overflow: hidden;
@@ -171,15 +170,11 @@ img {
 }
 
 .game-btn-ctnr {
+    background-color: #000000;
     padding: 0;
-}
-.game-btn-ctnr:active {
-    border: 0;
-}
-/* .teams{
-    font-size: smaller;
+    border: 1px solid #000000;
 }
 
-.time{
-    font-size: smaller;
-} */
+.game-btn-ctnr{
+    color: whitesmoke;
+}
