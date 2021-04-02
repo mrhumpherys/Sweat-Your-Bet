@@ -61,6 +61,8 @@ img {
 
 /* NEWS SECTION */
 
+
+
 .shadow-effect:before, .shadow-effect:after {
     content: "";
     position: absolute;
@@ -107,7 +109,7 @@ img {
 
 .imgBackground {
     padding: 15px;
-    background-color: var(--grey);
+    /* background-color: var(--grey); */
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     min-height: 5rem;
