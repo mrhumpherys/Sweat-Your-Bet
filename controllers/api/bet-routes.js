@@ -35,4 +35,25 @@ router.put('/:id', (req, res) => {
   //! challenger_id from session.user_id
 });
 
+// router.put('/:id', (req, res) => {
+//   Bet.update(req.body,
+//     {
+//         where: {
+//             id: req.params.id
+//         }
+//     }
+// )
+// .then(dbBetData => {
+//   if (!dbBetData) {
+//       res.status(404).json({ message: 'No User found with this id' });
+//       return;
+//   }
+//   res.json(dbBetData);
+// })
+// .catch(err => {
+//   console.log(err);
+//   res.status(500).json(err);
+// });
+// });
+
 module.exports = router;
