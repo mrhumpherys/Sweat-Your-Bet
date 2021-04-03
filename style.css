@@ -238,6 +238,13 @@ img {
         .divSpace {
             height: 0vh;
         }
+
+        .table-text-mobile {
+            font-size: smaller;
+        }
+        .mobile {
+            font-size: smaller;
+        }
     }
 
     @keyframes pulse_animation {
