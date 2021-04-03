@@ -137,3 +137,4 @@ User.prototype.bet = function (wager) {
 };
 
 module.exports = User;
+*/
