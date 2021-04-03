@@ -10,23 +10,22 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const sequelize = require('./config/connection');
-// const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-// const sess = {
-//   secret: 'Super secret secret',
-//   cookie: { maxAge: 5 * 60 * 1000 }, // 5 minutes
-//   resave: false,
-//   saveUninitialized: true,
-//   store: new SequelizeStore({
-//     db: sequelize,
-//   }),
-// };
+const sess = {
+  secret: 'Super secret secret',
+  // cookie: { maxAge: 5 * 60 * 1000 }, // 5 minutes
+  resave: false,
+  saveUninitialized: true,
+  // store: new SequelizeStore({
+  //   db: sequelize,
+  // }),
+};
 
-// app.use(session(sess));
+app.use(session(sess));
 
 const helpers = require('./utils/helpers');
-const { Console } = require('console');
-const Game = require('./models/Game');
+const { User } = require('./models');
 
 const hbs = exphbs.create({ helpers });
 
@@ -39,29 +38,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('./controllers/'));
 
-// app.listen(PORT, () => console.log(`Now listening at http://localhost:${PORT}`));
 sequelize.sync({ force: true }).then(async () => {
   app.listen(PORT, () => console.log(`Now listening at http://localhost:${PORT}`));
 
-  let game = await Game.create({
-    status: 'Upcoming',
-    homeTeam_id: 1,
-    awayTeam_id: 2,
-  });
-
-  console.log(game);
-
-  let user = await User.create({
-    username: 'kpessa',
-    password: 'hello',
-    email: 'kpessa@gmail.com',
-    balance: 100,
-  });
-
-  // let bet = await Bet.create({
-  //   host_id: 1,
-  //   wager: 20,
+  // let user = await User.create({
+  //   username: 'kurtster',
+  //   password: 'hello',
+  //   email: 'email@gmail.com',
   // });
 
-  // console.log(bet);
+  // User.findAll().then(dbData => console.log(dbData));
 });
