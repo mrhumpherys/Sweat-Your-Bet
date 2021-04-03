@@ -3,7 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 // const routes = require('./controllers/');
-const { User, Bet } = require('./models/index');
+const { User, Bet, Game } = require('./models/index');
 const { seed } = require('./seeds');
 
 const app = express();
@@ -25,7 +25,6 @@ const sess = {
 app.use(session(sess));
 
 const helpers = require('./utils/helpers');
-const { User } = require('./models');
 
 const hbs = exphbs.create({ helpers });
 
