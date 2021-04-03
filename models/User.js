@@ -7,9 +7,9 @@ CREATE TABLE User(
 */
 //! TODO - UPDATE
 
-const { Model, DataTypes } = require("sequelize");
-const bcrypt = require("bcrypt");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
+const sequelize = require('../config/connection');
 
 // create our User model
 class User extends Model {
@@ -47,6 +47,12 @@ User.init(
         len: [4],
       },
     },
+    balance: {
+      type: DataTypes.INTEGER,
+      validate: {
+        isNumeric: true,
+      },
+    },
   },
   {
     hooks: {
@@ -57,10 +63,7 @@ User.init(
       },
 
       async beforeUpdate(updatedUserData) {
-        updatedUserData.password = await bcrypt.hash(
-          updatedUserData.password,
-          10
-        );
+        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         return updatedUserData;
       },
     },
@@ -68,8 +71,12 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "user",
+    modelName: 'user',
   }
 );
+
+User.prototype.bet = function (wager) {
+  this.balance = this.balance - wager;
+};
 
 module.exports = User;
