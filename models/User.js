@@ -6,10 +6,10 @@ CREATE TABLE User(
 );
 */
 //! TODO - UPDATE
-/*
-const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
-const sequelize = require('../config/connection');
+
+const { Model, DataTypes } = require("sequelize");
+const bcrypt = require("bcrypt");
+const sequelize = require("../config/connection");
 
 // create our User model
 class User extends Model {
@@ -32,12 +32,41 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
+      }
+    },
+    wallet: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isAlphanumeric: true,
+      }
+    },
+    userWins: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isAlphanumeric: true,
+      }
+    },
+    userLosses: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isAlphanumeric: true,
+      }
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [4],
-      },
+      }
     },
   },
   {
@@ -49,7 +78,10 @@ User.init(
       },
 
       async beforeUpdate(updatedUserData) {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        updatedUserData.password = await bcrypt.hash(
+          updatedUserData.password,
+          10
+        );
         return updatedUserData;
       },
     },
@@ -57,9 +89,8 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: "user",
   }
 );
 
 module.exports = User;
-*/
