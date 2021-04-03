@@ -27,4 +27,10 @@ router.post('/', async (req, res) => {
   res.json(bet);
 });
 
+//! TODO
+//? PUT REQUEST TO ACCEPT A BET
+router.put('/:id', (req, res) => {
+  //! challenger_id from session.user_id
+});
+
 module.exports = router;

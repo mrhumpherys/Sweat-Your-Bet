@@ -21,23 +21,21 @@ class Game extends Model {}
 
 Game.init(
   {
-    id: {
+    GameID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
     },
     DateTime: {
       type: DataTypes.DATE,
-      defaultValue: new Date(),
       // allowNull: false,
     },
-    status: {
-      type: DataTypes.STRING,
-      defaultValue: 'Upcoming',
-      // allowNull: false,
-    },
-    homeTeam_id: {
+    // status: {
+    //   type: DataTypes.STRING,
+    //   defaultValue: 'Upcoming',
+    //   // allowNull: false,
+    // },
+    HomeTeamID: {
       type: DataTypes.INTEGER,
       // allowNull: false,
       // references: {
@@ -45,7 +43,7 @@ Game.init(
       //   key: 'TeamID',
       // },
     },
-    awayTeam_id: {
+    AwayTeamID: {
       type: DataTypes.INTEGER,
       allowNull: false,
       // references: {
@@ -55,13 +53,13 @@ Game.init(
     },
     AwayTeamScore: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0,
+      // allowNull: false,
+      // defaultValue: 0,
     },
     HomeTeamScore: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0,
+      // allowNull: false,
+      // defaultValue: 0,
     },
     HomeTeamWin: {
       type: DataTypes.BOOLEAN,
@@ -72,6 +70,7 @@ Game.init(
   {
     sequelize,
     freezeTableName: true,
+    underscored: true,
     modelName: 'game',
   }
 );
