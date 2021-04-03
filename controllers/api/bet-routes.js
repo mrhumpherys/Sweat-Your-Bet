@@ -1,9 +1,11 @@
 const router = require('express').Router();
-const { User, Bet } = require('../../models');
+const { User, Bet, Game } = require('../../models');
 
 // Get all bets
 router.get('/', (req, res) => {
-  Bet.findAll({})
+  Bet.findAll({
+    include: [{ model: Game }],
+  })
     .then(dbBetData => res.json(dbBetData))
     .catch(err => {
       console.log(err);
@@ -25,6 +27,12 @@ router.post('/', async (req, res) => {
   user.bet(wager);
   user.save();
   res.json(bet);
+});
+
+//! TODO
+//? PUT REQUEST TO ACCEPT A BET
+router.put('/:id', (req, res) => {
+  //! challenger_id from session.user_id
 });
 
 module.exports = router;

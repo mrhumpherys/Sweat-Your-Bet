@@ -23,51 +23,18 @@ Game.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
+      allowNull: false,
       autoIncrement: true,
     },
-    DateTime: {
-      type: DataTypes.DATE,
-      defaultValue: new Date(),
-      // allowNull: false,
-    },
-    status: {
-      type: DataTypes.STRING,
-      defaultValue: 'Upcoming',
-      // allowNull: false,
-    },
-    homeTeam_id: {
-      type: DataTypes.INTEGER,
-      // allowNull: false,
-      // references: {
-      //   model: 'team',
-      //   key: 'TeamID',
-      // },
-    },
-    awayTeam_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      // references: {
-      //   model: 'team',
-      //   key: 'TeamID',
-      // },
-    },
-    AwayTeamScore: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0,
-    },
-    HomeTeamScore: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0,
-    },
-    HomeTeamWin: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true,
-      defaultValue: null,
-    },
+    DateTime: DataTypes.DATE,
+    Status: DataTypes.STRING,
+    HomeTeamID: DataTypes.INTEGER,
+    HomeTeam: DataTypes.STRING,
+    AwayTeamID: DataTypes.INTEGER,
+    AwayTeamScore: DataTypes.INTEGER,
+    HomeTeamScore: DataTypes.INTEGER,
+    HomeTeamWin: DataTypes.BOOLEAN,
   },
   {
     sequelize,

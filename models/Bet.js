@@ -37,10 +37,10 @@ Bet.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       unique: true,
-      // references: {
-      //   model: 'user',
-      //   key: 'id',
-      // },
+      references: {
+        model: 'user',
+        key: 'id',
+      },
     },
     // challenger_id: {
     //   type: DataTypes.STRING,
@@ -63,7 +63,7 @@ Bet.init(
     },
     game_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
       unique: true,
       references: {
         model: 'game',
