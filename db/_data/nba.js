@@ -5,9 +5,12 @@ fs = require('fs');
 //================================
 //This imports the npm node-fetch module
 const fetch = require('node-fetch');;
-
-//ALREADY SET UP TO RETURN TEAM DATA. I.E. TEAM NAME, LOGO, ETC
-getTeam = () => {
+class NBA {
+    constructor(){
+        this.data = [];
+    }
+    //ALREADY SET UP TO RETURN TEAM DATA. I.E. TEAM NAME, LOGO, ETC
+getTeam() {
     //fetch request according to node-fetch's docs for node and express 
     fetch(`https://fly.sportsdata.io/v3/nba/scores/json/AllTeams`, {
         method: 'GET',
@@ -31,11 +34,10 @@ getTeam = () => {
                     console.log(`File is written successfully!`);
                 }
             });
-
         });
 }
 // LIST OF ALL GAMES BY DATE
-getGamesByDate = (date) => {
+getGamesByDate (date) {
     //THE SYNTAX FOR THE DATE FOR QUERIES
     date = '2021-MAR-31'
     //FETCH REQUEST WITH DATE VARIABLE
@@ -48,18 +50,13 @@ getGamesByDate = (date) => {
         .then(res => res.json())
         .then(json => {
             const data = JSON.stringify(json);
-            fs.writeFile('./game-data1.json', data, 'utf8', (err) => {
-                if (err) {
-                    console.log(`Error writing file: ${err}`);
-                } else {
-                    console.log(`File is written successfully!`);
-                }
-            });
-
+            console.log(data);
+            return data;
         });
+        
 }
 //RETURNS NEWS BY DATE- GET NEWS IS BETTER FOR RIGHT NOW
-getNewsByDate = (date) => {
+getNewsByDate(date) {
     date = '2021-MAR-31'
     fetch(`https://fly.sportsdata.io/v3/nba/scores/json/NewsByDate/${date}`, {
         method: 'GET',
@@ -77,12 +74,10 @@ getNewsByDate = (date) => {
                     console.log(`File is written successfully!`);
                 }
             });
-
         });
 }
 //GETS CURRENT NEWS STORIES
-getNews = () => {
-    
+getNews() {
     fetch(`https://fly.sportsdata.io/v3/nba/scores/json/News`, {
         method: 'GET',
         headers: {
@@ -99,7 +94,7 @@ getNews = () => {
                     console.log(`File is written successfully!`);
                 }
             });
-
         });
 }
-
+}
+module.exports = NBA

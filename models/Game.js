@@ -1,6 +1,7 @@
 /*
+
 CREATE TABLE Game (
-	id INTEGER AUTO_INCREMENT,
+	id INTEGER NOT_NULL,
     time INTEGER,
     status VARCHAR(30),
     team1_id INTEGER,
@@ -12,3 +13,34 @@ CREATE TABLE Game (
 );
 */
 //! TODO
+
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
+
+class Game extends Model {}
+
+Game.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false,
+      autoIncrement: true,
+    },
+    DateTime: DataTypes.DATE,
+    Status: DataTypes.STRING,
+    HomeTeamID: DataTypes.INTEGER,
+    HomeTeam: DataTypes.STRING,
+    AwayTeamID: DataTypes.INTEGER,
+    AwayTeamScore: DataTypes.INTEGER,
+    HomeTeamScore: DataTypes.INTEGER,
+    HomeTeamWin: DataTypes.BOOLEAN,
+  },
+  {
+    sequelize,
+    freezeTableName: true,
+    modelName: 'game',
+  }
+);
+
+module.exports = Game;
