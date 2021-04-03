@@ -39,13 +39,12 @@ img {
 }
 
 .navbar {
-    height: 60vh;
-    overflow: hidden;
+    height: 25vh;
+    /* overflow: hidden; */
 }
 
 .nav-link {
     color: var(--green);
-    font-size: 1.2rem;
     border-bottom: 1px solid var(--grey);
 }
 
@@ -54,7 +53,7 @@ img {
 }
 
 .divSpace {
-    height: 20vh;
+    height: 54vh;
 }
 
 /* END NAV */
@@ -152,7 +151,7 @@ img {
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .game-card-body {
@@ -179,15 +178,73 @@ img {
     color: whitesmoke;
 }
 
-/* END GAMES */
+/* BELONGS TO GAME DASHBOARD VIEW */
 
-/* START DASHBOARD  */
+.imgBackground-dash {
+    padding: 15px;
+    
+    min-height: 5rem;
+    max-height: 8rem;
+}
 
-/* .user-stat {
+.game-team-border {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border: .75px solid var(--dGreen);
+    background-color: var(--grey);
+}
+.pulse {
+    animation-name: pulse_animation;
+    animation-duration: 5000ms;
+    transform-origin:70% 70%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.pic-1 {
+    border-top-left-radius: 20px;
+}
+
+.pic-2 {
+    border-top-right-radius: 20px;
+}
+
+/* END GAME DASHBOARD VIEW */
+    /* END GAMES */
+    /* START DASHBOARD  */
+    /* .user-stat {
     max-height: 5rem;
 }
 .user-stat-cntr {
     max-height: fit-content;
 } */
+    /* END DASHBOARD */
+    @media (max-width: 768px) {
+        .logoContainer {
+            height: 100px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            ;
+        }
+        .navbar {
+            height: min-content;
+            overflow: hidden;
+        }
+        .nav-link:hover {
+            color: whitesmoke;
+        }
+        .divSpace {
+            height: 0vh;
+        }
+    }
 
-/* END DASHBOARD */
+    @keyframes pulse_animation {
+        0% { transform: scale(1); }
+        30% { transform: scale(1); }
+        40% { transform: scale(1.08); }
+        50% { transform: scale(1); }
+        60% { transform: scale(1); }
+        70% { transform: scale(1.05); }
+        80% { transform: scale(1); }
+        100% { transform: scale(1); }
+    }
