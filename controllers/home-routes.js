@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
             return;
         }
         res.render('homepage', {
-            games
+            // games
         });
     })
     .catch(err => {
