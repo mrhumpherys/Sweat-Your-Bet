@@ -3,6 +3,8 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 // const routes = require('./controllers/');
+const { User, Bet } = require('./models/index');
+const { seed } = require('./seeds');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -36,14 +38,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('./controllers/'));
 
+// app.listen(PORT, () => console.log(`Now listening at http://localhost:${PORT}`));
 sequelize.sync({ force: true }).then(async () => {
   app.listen(PORT, () => console.log(`Now listening at http://localhost:${PORT}`));
-
-  // let user = await User.create({
-  //   username: 'kurtster',
-  //   password: 'hello',
-  //   email: 'email@gmail.com',
-  // });
-
-  // User.findAll().then(dbData => console.log(dbData));
+  seed();
 });
