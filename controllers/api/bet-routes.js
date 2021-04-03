@@ -1,9 +1,11 @@
 const router = require('express').Router();
-const { User, Bet } = require('../../models');
+const { User, Bet, Game } = require('../../models');
 
 // Get all bets
 router.get('/', (req, res) => {
-  Bet.findAll({})
+  Bet.findAll({
+    include: [{ model: Game }],
+  })
     .then(dbBetData => res.json(dbBetData))
     .catch(err => {
       console.log(err);

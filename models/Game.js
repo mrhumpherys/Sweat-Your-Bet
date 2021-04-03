@@ -21,7 +21,12 @@ class Game extends Model {}
 
 Game.init(
   {
-    GameID: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false,
+      autoIncrement: true,
+    },
     DateTime: DataTypes.DATE,
     Status: DataTypes.STRING,
     HomeTeamID: DataTypes.INTEGER,
