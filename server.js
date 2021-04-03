@@ -3,7 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 // const routes = require('./controllers/');
-const { User } = require('./models/index');
+const { User, Bet } = require('./models/index');
 const { test } = require('./test');
 
 const app = express();
@@ -26,6 +26,7 @@ const sequelize = require('./config/connection');
 
 const helpers = require('./utils/helpers');
 const { Console } = require('console');
+const Game = require('./models/Game');
 
 const hbs = exphbs.create({ helpers });
 
@@ -42,10 +43,25 @@ app.use(require('./controllers/'));
 sequelize.sync({ force: true }).then(async () => {
   app.listen(PORT, () => console.log(`Now listening at http://localhost:${PORT}`));
 
-  let kurt = await User.create({
+  let game = await Game.create({
+    status: 'Upcoming',
+    homeTeam_id: 1,
+    awayTeam_id: 2,
+  });
+
+  console.log(game);
+
+  let user = await User.create({
     username: 'kpessa',
     password: 'hello',
     email: 'kpessa@gmail.com',
     balance: 100,
   });
+
+  // let bet = await Bet.create({
+  //   host_id: 1,
+  //   wager: 20,
+  // });
+
+  // console.log(bet);
 });

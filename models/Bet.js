@@ -18,79 +18,83 @@ CREATE TABLE Bet (
 */
 //! TODO
 
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
+const User = require('./User');
+const Game = require('./Game');
 
 class Bet extends Model {}
 
-Bet.init({
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  hostID: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-    references: {
-      model: "user",
-      key: "id",
+Bet.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
-  },
-  challengerID: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-    references: {
-      model: "user",
-      key: "id",
+    host_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
+      // references: {
+      //   model: 'user',
+      //   key: 'id',
+      // },
     },
-  },
-  wager: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  hostWon: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  gameID: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-    references: {
-      model: "game",
-      key: "GameID",
+    // challenger_id: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    //   unique: true,
+    //   references: {
+    //     model: 'user',
+    //     key: 'id',
+    //   },
+    // },
+    wager: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
     },
-  },
-  pickTeamID: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-    references: {
-      model: "team",
-      key: "id",
+    host_won: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: null,
     },
-  },
-  win: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false,
-    unique: true,
-    references: {
-      model: true,
+    game_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
+      references: {
+        model: 'game',
+        key: 'id',
+      },
     },
+    // pickTeamID: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   unique: true,
+    //   references: {
+    //     model: 'team',
+    //     key: 'id',
+    //   },
+    // },
+    // win: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: false,
+    //   unique: true,
+    //   references: {
+    //     model: true,
+    //   },
+    // },
   },
-  sequelize,
-  timestamps: false,
-  freezeTableName: true,
-  underscored: true,
-  modelName: "bet",
-});
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'bet',
+  }
+);
 
 module.exports = Bet;

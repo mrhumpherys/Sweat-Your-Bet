@@ -1,6 +1,6 @@
 const User = require('./User');
+const Bet = require('./Bet');
 
 //! TODO
 
-module.exports = { User };
-// module.exports = { User, Bet,  };
+module.exports = { User, Bet };

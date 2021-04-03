@@ -14,59 +14,65 @@ CREATE TABLE Game (
 */
 //! TODO
 
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Game extends Model {}
 
 Game.init(
   {
-    GameID: {
+    id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true,
     },
     DateTime: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: new Date(),
+      // allowNull: false,
     },
-    Status: {
+    status: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: 'Upcoming',
+      // allowNull: false,
     },
-    HomeTeamID: {
+    homeTeam_id: {
+      type: DataTypes.INTEGER,
+      // allowNull: false,
+      // references: {
+      //   model: 'team',
+      //   key: 'TeamID',
+      // },
+    },
+    awayTeam_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: "team",
-        key: "TeamID",
-      },
-    },
-    AwayTeamID: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "team",
-        key: "TeamID",
-      },
+      // references: {
+      //   model: 'team',
+      //   key: 'TeamID',
+      // },
     },
     AwayTeamScore: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 0,
     },
     HomeTeamScore: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 0,
     },
     HomeTeamWin: {
       type: DataTypes.BOOLEAN,
       allowNull: true,
+      defaultValue: null,
     },
   },
   {
     sequelize,
     freezeTableName: true,
-    modelName: 'game'
+    modelName: 'game',
   }
 );
 

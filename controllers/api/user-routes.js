@@ -132,13 +132,6 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.put('/:id/:wager', async (req, res) => {
-  let user = await User.findByPk(req.params.id);
-  user.bet(req.params.wager);
-  user.save();
-  res.json(user);
-});
-
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
