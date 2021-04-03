@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { Bet, Game, User } = require('../../models');
+const  User  = require('../../models/User');
 
 // Get all users
 router.get('/', (req, res) => {
     User.findAll({
-            attributes: {
-                exclude: ['password']
-            }
+            // attributes: {
+            //     exclude: ['password']
+            // }
         })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
@@ -57,7 +57,7 @@ router.post('/', (req, res) => {
             email: req.body.email,
             password: req.body.password
         })
-        .then(dbsuerData => {
+        .then(dbUserData => {
             req.session.save(() => {
                 req.session.user_id = dbUserData.id;
                 req.session.username = dbUserData.username;
