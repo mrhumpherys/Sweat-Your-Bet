@@ -42,15 +42,15 @@ Bet.init(
         key: 'id',
       },
     },
-    // challenger_id: {
-    //   type: DataTypes.STRING,
-    //   allowNull: true,
-    //   unique: true,
-    //   references: {
-    //     model: 'user',
-    //     key: 'id',
-    //   },
-    // },
+    challenger_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      unique: true,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
     wager: {
       type: DataTypes.INTEGER,
       allowNull: false,
