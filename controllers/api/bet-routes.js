@@ -1,19 +1,19 @@
-const router = require('express').Router();
-const { User, Bet, Game } = require('../../models');
+const router = require("express").Router();
+const { User, Bet, Game } = require("../../models");
 
 // Get all bets
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   Bet.findAll({
     include: [{ model: Game }],
   })
-    .then(dbBetData => res.json(dbBetData))
-    .catch(err => {
+    .then((dbBetData) => res.json(dbBetData))
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   host_id = req.body.host_id;
   wager = req.body.wager;
   game_id = req.body.game_id;
@@ -31,29 +31,28 @@ router.post('/', async (req, res) => {
 
 //! TODO
 //? PUT REQUEST TO ACCEPT A BET
-router.put('/:id', (req, res) => {
-  //! challenger_id from session.user_id
+router.put("/:id", (req, res) => {
+  // let challenger_id = req.session.user_id;
+  // req.body = challenger
+  Bet.update({challenger_id: req.body.challenger_id}, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbBetData) => {
+      if (!dbBetData) {
+        res.status(404).json({ message: "No User found with this id" });
+        return;
+      }
+      res.json(dbBetData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
-// router.put('/:id', (req, res) => {
-//   Bet.update(req.body,
-//     {
-//         where: {
-//             id: req.params.id
-//         }
-//     }
-// )
-// .then(dbBetData => {
-//   if (!dbBetData) {
-//       res.status(404).json({ message: 'No User found with this id' });
-//       return;
-//   }
-//   res.json(dbBetData);
-// })
-// .catch(err => {
-//   console.log(err);
-//   res.status(500).json(err);
-// });
-// });
+// ONCE SESSION IS UPDATED 
+// bet.update({challenger_id: req.session.user_id}
 
 module.exports = router;
