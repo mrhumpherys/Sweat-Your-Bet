@@ -51,7 +51,7 @@
                             <a class="col-12 nav-link text-decoration-none" href="#">WALLET</a>
                         </li>
                         <li class="nav-item navItem col-12 d-flex flex-wrap justify-content-start">
-                            <a class="col-12 nav-link text-decoration-none" href="#">SETTINGS</a>
+                            <a id="logout" class="col-12 nav-link text-decoration-none" href="#">Log Out</a>
                         </li>
                         <li class="nav-item navItem col-12 d-flex flex-wrap justify-content-start">
                             <!-- Button trigger modal -->
@@ -102,7 +102,7 @@
     <div class="modal fade bg-secondary" id="exampleModalCenter" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered " role="document">
-            <div class="modal-content">
+            <div class="modal-content login-form">
                 <div class="modal-header bg-dark">
                     <h5 class="modal-title" id="exampleModalLongTitle">LOGIN</h5>
                     <button type="button" class="close bg-dark" data-dismiss="modal" aria-label="Close">
@@ -115,7 +115,7 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
                             <input type="email" class="form-control bg-dark border-success text-white"
-                                id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                id="email-login" aria-describedby="emailHelp" placeholder="Enter email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your
                                 email with anyone
                                 else.</small>
@@ -123,7 +123,7 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" class="form-control bg-dark border-success text-white"
-                                id="exampleInputPassword1" placeholder="Password">
+                                id="password-login" placeholder="Password">
                         </div>
                     </form>
                     <!-- END SIGN IN FORM -->
@@ -131,7 +131,7 @@
                 <div class="modal-footer bg-dark">
                     <button type="button" class="btn btn-secondary" data-toggle="modal"
                         data-target="#exampleModalCenter1" data-dismiss="modal">SIGN UP</button>
-                    <button type="button" class="btn btn-success">LOGIN</button>
+                    <button type="submit" id="login" class="btn btn-success">LOGIN</button>
                 </div>
             </div>
         </div>
@@ -157,7 +157,7 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email Address</label>
                             <input type="email" class="form-control bg-dark border-success text-white"
-                                id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                id="email-signup" aria-describedby="emailHelp" placeholder="Enter email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your
                                 email with anyone
                                 else.</small>
@@ -165,19 +165,19 @@
                         <div class="form-group">
                             <label for="exampleInputUser">User Name</label>
                             <input type="text" class="form-control bg-dark border-success text-white"
-                                id="exampleInputUser" placeholder="Enter a username">
+                                id="username-signup" placeholder="Enter a username">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" class="form-control bg-dark border-success text-white"
-                                id="exampleInputPassword1" placeholder="Password">
+                                id="password-signup" placeholder="Password">
                         </div>
                     </form>
                     <!-- END SIGN UP FORM -->
                 </div>
-                <div class="modal-footer bg-dark">
-                    <button type="button" class="btn btn-success">SIGN UP</button>
+                <div class="modal-footer bg-dark signup-form">
+                    <button type="submit" id="signup" class="btn btn-success">SIGN UP</button>
                 </div>
             </div>
         </div>
@@ -201,6 +201,7 @@
             $('.single-item1').slick({ autoplay: true, autoplaySpeed: 15000, arrows: false });
         });
     </script>
+    <script src="/assets/javascript/login.js"></script>
 </body>
 
 
