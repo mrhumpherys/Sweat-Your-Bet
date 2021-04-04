@@ -82,8 +82,28 @@ router.get('/', (req, res) => {
 //     res.render('login');
 //   });
 router.get('/bet/:id', (req,res) => {
+    // date = '2021-APR-04'
+    // let id = req.params.id
+    // fetch(`https://fly.sportsdata.io/v3/nba/scores/json/GamesByDate/${date}`, {
+    //     method: 'GET',
+    //     headers: {
+    //         'Ocp-Apim-Subscription-Key': process.env.KEY
+    //     }
+    // })
+    //     .then(res => res.json())
+    //     .then(games => {
+    //         //let game = JSON.stringify(games)
+    //         //let game1 = JSON.parse(game)
+    //         let singleGame = JSON.stringify(games.filter(data => data.GameID === ('16227')))
+    //         console.log(singleGame)
+    //         let game = JSON.parse(singleGame)
+    //         console.log(game)
+    //         res.render('bet', {
+    //             game
+    //         })
+    //     });
+
     date = '2021-APR-04'
-    let id = req.params.id
     fetch(`https://fly.sportsdata.io/v3/nba/scores/json/GamesByDate/${date}`, {
         method: 'GET',
         headers: {
@@ -92,16 +112,12 @@ router.get('/bet/:id', (req,res) => {
     })
         .then(res => res.json())
         .then(games => {
-            //let game = JSON.stringify(games)
-            //let game1 = JSON.parse(game)
-            let singleGame = JSON.stringify(games.filter(data => data.GameID === ('16227')))
-            console.log(singleGame)
-            let game = JSON.parse(singleGame)
-            console.log(game)
-            res.render('bet', {
-                game
+            console.log('GAME DATA I WANT:', games)
+            res.render(`bet/${req.params.id}`, {
+                games
             })
         });
+    
     
 });
 

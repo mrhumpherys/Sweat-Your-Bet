@@ -1,8 +1,10 @@
 <!-- NEWS -->
 <div class="row-col col-12 d-flex flex-wrap Border">
     <div class="row-col col-12 d-flex flex-wrap justify-content-start">
-        <div class="col-12"><h1 class="newsHead">NEWS</h1></div>
-        
+        <div class="col-12">
+            <h1 class="newsHead">NEWS</h1>
+        </div>
+
     </div>
     <!-- SINGLE ITEM CLASS WORKS SLIDER, RUNS EACH DIV IN SUCCESSION  -->
     <div class="row-col col-12 d-flex flex-wrap justify-content-center single-item">
@@ -12,9 +14,7 @@
         <div class="col-12 d-flex flex-wrap justify-content-center">
             <div class="card shadow-effect col-lg-8">
                 <div class="imgBackground col-lg-3 col-md-3 col-sm-3 col-xl-3">
-                    <img class="card-img-top"
-                        src="{{render_team_logo TeamID}}"
-                        alt="Card image cap">
+                    <img class="card-img-top" src="{{render_team_logo TeamID}}" alt="Card image cap">
                 </div>
                 <div class="col-12 mt-3 text-left">Published {{TimeAgo}}</div>
                 <div class="card-body">
@@ -23,7 +23,8 @@
                         <p class="card-text">{{Content}}</p>
                     </blockquote>
 
-                    <a href="{{Url}}" target="_blank" rel="noopener" class="btn btn-primary news-btn">View Full Story</a>
+                    <a href="{{Url}}" target="_blank" rel="noopener" class="btn btn-primary news-btn">View Full
+                        Story</a>
                 </div>
             </div>
         </div>
@@ -59,15 +60,13 @@
                     <!-- HANDLEBARS HERE FOR TEAM LOGOS -->
                     <!--  -->
                     <div class="imgBackground-dash d-flex flex-wrap col-6 pic-1"><img
-                            src="{{render_team_logo HomeTeamID}}"
-                            alt="Card image cap">
+                            src="{{render_team_logo HomeTeamID}}" alt="Card image cap">
                     </div>
                     <!--  -->
                     <!-- HANDLEBARS HERE FOR TEAM LOGOS -->
                     <!--  -->
                     <div class="imgBackground-dash col-6 d-flex flex-wrap pic-2"><img
-                            src="{{render_team_logo AwayTeamID}}"
-                            alt="Card image cap">
+                            src="{{render_team_logo AwayTeamID}}" alt="Card image cap">
                     </div>
                 </div>
                 <div class="card-body col-12 d-flex flex-wrap justify-content-center">
@@ -91,27 +90,133 @@
                         <!--  -->
                         <div class="col-sm-12 time">{{format_date DateTime}} @ {{format_time DateTime}}</div>
                     </div>
-                    <div class="col-12 d-flex justify-content-center">
-                        <a href="/bet/{{GameID}}" class="btn btn-primary news-btn pulse" >Place Wager</a>
+
+
+                    {{!-- TESTING ADDING ANOTHER ACCORDION FOR BETS --}}
+                    <div class="d-flex col-12 justify-content-center table-text-mobile" id="accordion-{{@index}}">
+                        <!-- START OF SINGLE GAME INFO DIV -->
+
+                        <div class="card game-card d-flex flex-wrap col-10 justify-content-center game-btn-ctnr">
+                            <!-- NEED TO CHANGE THE IDS DYNAMICALLY FOR ACCORDION -->
+                            <!--                                        THE ID HERE MUST MATCH BELOW -->
+                            <div class="d-flex flex-wrap col-sm-12 justify-content-end card-header"
+                                id="heading-{{@index}}">
+                                <div class="d-flex col-sm-12 col-md-12 col-lg-3 flex-wrap justify-content-center">
+                                    <h5 class="mb-0 d-flex flex-wrap justify-content-center col-sm-12 text-align-start">
+                                        <!-- NEED TO CHANGE THE COLLAPSE IDS DYNAMICALLY FOR ACCORDION -->
+                                        <!--                                        THE ID HERE MUST MATCH BELOW -->
+                                        <button
+                                            class=" d-flex flex-wrap col-sm-12 justify-content-center border-none game-btn-ctnr pulse"
+                                            data-toggle="collapse" data-target="#collapse-{{@index}}"
+                                            aria-expanded="true" aria-controls="collapse-{{@index}}">
+                                            <div class="col-12 d-flex justify-content-center">
+                                                <a class="btn btn-primary news-btn game-actBet-btn ">Place
+                                                    Wager</a>
+                                            </div>
+
+                                        </button>
+                                    </h5>
+                                </div>
+
+                            </div>
+                            <!-- THE ID AND ARIA LABELS MUST MATCH THE ID FOR THE CARD -->
+                            <!-- NEED TO CHANGE THE COLLAPSE IDS DYNAMICALLY FOR ACCORDION -->
+                            <!--                                        THE ID HERE MUST MATCH ABOVE -->
+                            <div class="d-flex justify-content-center col-12 mobile">
+                                <div id="collapse-{{@index}}" class="collapse" aria-labelledby="heading-{{@index}}"
+                                    data-parent="#accordion-{{@index}}">
+                                    <div
+                                        class="card-body d-flex flex-wrap game-card-body justify-content-center col-12">
+                                        <div class="row-col d-flex flex-wrap justify-content-center col-sm-12 Border">
+                                            <div class="row-col col-12 d-flex flex-wrap ">
+                                                <div class="row-col col-12 d-flex flex-wrap justify-content-center">
+                                                    <div class="col-12 d-flex flex-wrap ">
+                                                        <h1 class="newsHead">
+                                                            Live Bets
+                                                        </h1>
+                                                    </div>
+                                                </div>
+                                                <div class="row-col col-12 d-flex flex-wrap justify-content-center">
+                                                    <!-- CARDS -->
+                                                    <div
+                                                        class="card shadow-effect  d-flex flex-wrap col-sm-10 justify-content-center mobile">
+
+                                                        <div
+                                                            class="card-body col-12 d-flex flex-wrap justify-content-center mobile">
+                                                            <form class="row gy-2 gx-3 d-flex flex-wrap justify-content-start">
+                                                                <div class="col-auto">
+                                                                    <label for="bet">I bet</label>
+                                                                    <select type="form-select"
+                                                                        class="form-control bg-dark border-success text-white"
+                                                                        id="winner">
+
+                                                                        <option selected>{{render_team_name HomeTeamID}}
+                                                                        </option>
+                                                                        <option value="Team 2">{{render_team_name
+                                                                            AwayTeamID}}</option>
+
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-auto">
+                                                                    <label for="beats">Beats</label>
+                                                                    <select type="form-select"
+                                                                        class="form-control bg-dark border-success text-white"
+                                                                        id="loser">
+                                                                        <option selected>{{render_team_name
+                                                                            AwayTeamID}}</option>
+                                                                        <option value="Team 1">{{render_team_name
+                                                                            HomeTeamID}}</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-auto">
+                                                                    <label for="wager">Wager</label>
+                                                                    <input type="number"
+                                                                        class="form-control bg-dark border-success text-white"
+                                                                        id="wager" placeholder="5.00">
+                                                                </div>
+
+                                                                <div class="col-12">
+                                                                    <button type="button"
+                                                                        class="btn btn-danger tooltip-test mobile"
+                                                                        title="Once bets are placed they cannot be withdrawn!">Place
+                                                                        Bet</button>
+                                                                </div>
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- END ACCORDION -->
+                    {{!-- END TESTING --}}
+
+
                     <!-- ACCORDION -->
                     <!-- NEED TO CHANGE THE IDS DYNAMICALLY FOR ACCORDION -->
                     <!--                                        THE ID HERE MUST MATCH BELOW -->
                     <div class="d-flex col-12 justify-content-center table-text-mobile" id="accordion-{{GameID}}">
                         <!-- START OF SINGLE GAME INFO DIV -->
-                        
+
                         <div class="card game-card d-flex flex-wrap col-10 justify-content-center game-btn-ctnr">
                             <!-- NEED TO CHANGE THE IDS DYNAMICALLY FOR ACCORDION -->
                             <!--                                        THE ID HERE MUST MATCH BELOW -->
-                            <div class="d-flex flex-wrap col-sm-12 justify-content-end card-header" id="heading-{{GameID}}">
+                            <div class="d-flex flex-wrap col-sm-12 justify-content-end card-header"
+                                id="heading-{{GameID}}">
                                 <div class="d-flex col-sm-12 col-md-12 col-lg-3 flex-wrap justify-content-center">
                                     <h5 class="mb-0 d-flex flex-wrap justify-conent-center col-sm-12 text-align-start">
                                         <!-- NEED TO CHANGE THE COLLAPSE IDS DYNAMICALLY FOR ACCORDION -->
                                         <!--                                        THE ID HERE MUST MATCH BELOW -->
                                         <button
                                             class=" d-flex flex-wrap col-sm-12 justify-content-center border-none game-btn-ctnr"
-                                            data-toggle="collapse" data-target="#collapse-{{GameID}}" aria-expanded="true"
-                                            aria-controls="collapse-{{GameID}}">
+                                            data-toggle="collapse" data-target="#collapse-{{GameID}}"
+                                            aria-expanded="true" aria-controls="collapse-{{GameID}}">
                                             <span class="game-actBet-btn">Active Bets</span>
                                         </button>
                                     </h5>
@@ -169,7 +274,7 @@
                 </div>
             </div>
         </div>
-        
+
         {{/each}}
         <!-- END OF SINGLE GAME INFO DIV -->
 

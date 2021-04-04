@@ -34,7 +34,7 @@ module.exports = {
 
 
     render_team_logo: (id, logo) => {
-
+        
         if (id === 1) {
             logo = "https://upload.wikimedia.org/wikipedia/en/0/02/Washington_Wizards_logo.svg"
             return logo;
@@ -280,5 +280,7 @@ module.exports = {
             return name;
         }
     },
+
+    
 
 }
