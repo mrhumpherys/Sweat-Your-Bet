@@ -5,20 +5,21 @@ const NBA = require('../db/_data/nba');
 
 
 router.get('/', (req, res) => {
+     new NBA().getNews()
     Game.findAll({})
-    .then( dbGamedata => {
-        if(!dbGamedata) {
-            res.status(404).json({ message: 'No Games on this date' });
-            return;
-        }
-        res.render('homepage', {
-            // games
+        .then(dbGamedata => {
+            if (!dbGamedata) {
+                res.status(404).json({ message: 'No Games on this date' });
+                return;
+            }
+            res.render('homepage', {
+                // games
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
         });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
 
 });
 
@@ -27,9 +28,8 @@ router.get('/', (req, res) => {
 //       res.redirect('/');
 //       return;
 //     }
-  
+
 //     res.render('login');
 //   });
-  
-  module.exports = router;
-  
+
+module.exports = router;

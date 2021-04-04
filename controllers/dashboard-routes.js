@@ -1,25 +1,50 @@
 const router = require('express').Router();
 const { Bet, Game, User } = require('../models');
 const NBA = require('../db/_data/nba');
+const fetch = require('node-fetch');;
+
 
 
 
 router.get('/', (req, res) => {
-    Game.findAll({})
-    .then( dbGamedata => {
-        if(!dbGamedata) {
-            res.status(404).json({ message: 'No Games on this date' });
-            return;
-        }
-        res.render('dashboard', {
-            // games
-        });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
 
+    // ALSO NEED TO GET USER STATS TO RENDER FOR DASHBOARD VIEW
+    // WILL NEED TO CONVERT TO ASYNC WHEN GRABBING BOTH DATA SETS
+    // ==================================================================
+    // async function getGames(){
+    //     date = '2021-APR-03'
+    //     let response = await  
+    //     fetch(`https://fly.sportsdata.io/v3/nba/scores/json/GamesByDate/${date}`, {
+    //         method: 'GET',
+    //         headers: {
+    //             'Ocp-Apim-Subscription-Key': process.env.KEY
+    //         }
+    //     })
+    //     return response
+    // }
+    // getGames()
+    // .then(res=> res.json())
+    // .then(data =>{
+    //     const games = JSON.stringify(data)
+    //     console.log({games: games})
+    // })
+    // .catch(err => console.log(err))
+    // =================================================================================
+
+    date = '2021-APR-03'
+    fetch(`https://fly.sportsdata.io/v3/nba/scores/json/GamesByDate/${date}`, {
+        method: 'GET',
+        headers: {
+            'Ocp-Apim-Subscription-Key': process.env.KEY
+        }
+    })
+        .then(res => res.json())
+        .then(games => {
+            console.log('GAME DATA I WANT:', games)
+            res.render('dashboard', {
+                games
+            })
+        });
 });
 
 router.get("/activeBets", (req, res) => {
@@ -31,11 +56,11 @@ router.get("/activeBets", (req, res) => {
     //        challenger_id: req.session.user_id
     //    }
     //})
-        res.render('activeBets');
-        return;
-    
-    
-    
+    res.render('activeBets');
+    return;
+
+
+
 });
 
 router.get("/history", (req, res) => {
@@ -47,11 +72,11 @@ router.get("/history", (req, res) => {
     //        challenger_id: req.session.user_id
     //    }
     //})
-        res.render('history');
-        return;
-    
-    
-    
+    res.render('history');
+    return;
+
+
+
 });
 
 module.exports = router;
