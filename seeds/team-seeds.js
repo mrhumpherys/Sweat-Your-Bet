@@ -577,4 +577,4 @@ const teamData = [
 
 const seedTeams = () => Team.bulkCreate(teamData, {individualHooks: true});
     
-module.exports = seedTeams;
+module.exports = seedTeams,teamData
