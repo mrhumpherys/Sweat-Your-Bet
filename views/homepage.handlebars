@@ -1,7 +1,8 @@
 <!-- NEWS -->
 <div class="row-col col-12 d-flex flex-wrap Border">
     <div class="row-col col-12 d-flex flex-wrap justify-content-start">
-        <h1 class="newsHead">NEWS</h1>
+        <div class="col-12"><h1 class="newsHead">NEWS</h1></div>
+        
     </div>
     <!-- SINGLE ITEM CLASS WORKS SLIDER, RUNS EACH DIV IN SUCCESSION  -->
     <div class="row-col col-12 d-flex flex-wrap justify-content-center single-item">
@@ -15,13 +16,14 @@
                         src="{{render_team_logo TeamID}}"
                         alt="Card image cap">
                 </div>
+                <div class="col-12 mt-3 text-left">Published {{TimeAgo}}</div>
                 <div class="card-body">
                     <h5 class="card-title newsTitle">{{Title}}</h5>
                     <blockquote class="blockquote">
                         <p class="card-text">{{Content}}</p>
                     </blockquote>
 
-                    <a href="{{Url}}" class="btn btn-primary news-btn">View Full Story</a>
+                    <a href="{{Url}}" target="_blank" rel="noopener" class="btn btn-primary news-btn">View Full Story</a>
                 </div>
             </div>
         </div>
@@ -50,9 +52,9 @@
         <!-- THE EACH LOOP SHOULD START HERE FOR MULTIPLE CARDS -->
         {{#each games}}
         <!-- CARDS -->
-        <div class="col-sm-12 d-flex flex-wrap justify-content-center">
-            <div class="card shadow-effect d-flex flex-wrap justify-content-center col-sm-10 ">
-                <div class=" d-flex flex-wrap justify-content-start game-team-border col-12">
+        <div class="col-sm-10 d-flex flex-wrap justify-content-center">
+            <div class="card shadow-effect d-flex flex-wrap justify-content-center col-sm-8 ">
+                <div class=" d-flex flex-wrap justify-content-start game-team-border col-sm-12">
                     <!--  -->
                     <!-- HANDLEBARS HERE FOR TEAM LOGOS -->
                     <!--  -->

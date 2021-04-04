@@ -11,9 +11,9 @@ router.get('/', (req, res) => {
     // COPIED FROM DASHBOARD ROUTE
     // ==================================================================
     async function getNews(){
-        date = '2021-APR-03'
+        // date = '2021-APR-03'
         let response = await  
-        fetch(`https://fly.sportsdata.io/v3/nba/scores/json/NewsByDate/${date}`, {
+        fetch(`https://fly.sportsdata.io/v3/nba/scores/json/News`, {
             method: 'GET',
             headers: {
                 'Ocp-Apim-Subscription-Key': process.env.KEY
