@@ -107,7 +107,7 @@ module.exports = {
             return logo;
         }
         if (id === 18) {
-            logo = "hhttps://upload.wikimedia.org/wikipedia/en/5/5d/Oklahoma_City_Thunder.svg"
+            logo = "https://upload.wikimedia.org/wikipedia/en/5/5d/Oklahoma_City_Thunder.svg"
             return logo;
         }
         if (id === 19) {
