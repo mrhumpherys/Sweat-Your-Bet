@@ -2,9 +2,18 @@
 require('dotenv').config();
 // IMPORT FILE SYSTEM
 fs = require('fs');
+// const {teamData} = require('../../seeds/team-seeds')
+// // console.log(teamData)
+// let urlLogo=[];
+// teamData.map(data =>{
+//      urlLogo.push(data.WikipediaLogoUrl)
+// })
+// console.log(urlLogo)
+
 //================================
 //This imports the npm node-fetch module
-const fetch = require('node-fetch');;
+const fetch = require('node-fetch');const { url } = require('inspector');
+;
 class NBA {
     constructor(){
         this.data = [];
