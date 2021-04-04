@@ -1,4 +1,16 @@
 module.exports = {
+    format_date: (date) => {
+        let newDate =  date.split('T')[0];
+
+        return newDate;
+        
+    },
+    format_time: (date) => {
+        let newDate =  date.split('T')[1];
+
+        return newDate;
+        
+    },
     // format_date: date => {
     //     return `${new Date(date).getMonth() + 1}/${new Date(date).getDate()}/${new Date(
     //         date
@@ -12,8 +24,8 @@ module.exports = {
         return word;
     },
     
-//     auto_increment: (index) =>{
-//        index + 1;
-// }
+    auto_increment: (index) =>{
+       return index + 1;
+}
 
 }
