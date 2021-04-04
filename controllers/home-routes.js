@@ -35,19 +35,21 @@ router.get('/', (req, res) => {
     getGames()
     .then(res=> res.json())
     .then(data =>{
-        const games = JSON.stringify(data)
+        const data1 = JSON.stringify(data)
         // console.log(games)
         getNews()
         .then(res=> res.json())
         .then(newsData =>{
-            const news = JSON.stringify(newsData)
-            console.log({games:games})
-            console.log(`\n${news}`)
+            const data2 = JSON.stringify(newsData)
+            const games = JSON.parse(data1)
+            const news = JSON.parse(data2)
+            console.log(games)
+            console.log(news)
             
-            // res.render('homepage',{
-            //     news, games 
+            res.render('homepage',{
+                news, games 
 
-            // })
+            })
         })
     })
     .catch(err => console.log(err))
