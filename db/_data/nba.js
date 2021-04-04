@@ -39,7 +39,7 @@ getTeam() {
 // LIST OF ALL GAMES BY DATE
 getGamesByDate (date) {
     //THE SYNTAX FOR THE DATE FOR QUERIES
-    date = '2021-MAR-31'
+    // date = '2021-MAR-31'
     //FETCH REQUEST WITH DATE VARIABLE
     fetch(`https://fly.sportsdata.io/v3/nba/scores/json/GamesByDate/${date}`, {
         method: 'GET',
@@ -57,7 +57,7 @@ getGamesByDate (date) {
 }
 //RETURNS NEWS BY DATE- GET NEWS IS BETTER FOR RIGHT NOW
 getNewsByDate(date) {
-    date = '2021-MAR-31'
+    // date = '2021-MAR-31'
     fetch(`https://fly.sportsdata.io/v3/nba/scores/json/NewsByDate/${date}`, {
         method: 'GET',
         headers: {
@@ -84,16 +84,10 @@ getNews() {
             'Ocp-Apim-Subscription-Key': process.env.KEY
         }
     })
-        .then(res => res.json())
-        .then(json => {
-            const data = JSON.stringify(json);
-            fs.writeFile('./current-news-data.json', data, 'utf8', (err) => {
-                if (err) {
-                    console.log(`Error writing file: ${err}`);
-                } else {
-                    console.log(`File is written successfully!`);
-                }
-            });
+        .then(data=> data.json())
+        .then(news => {
+            const newsData = JSON.stringify(news);
+            return newsData
         });
 }
 }
