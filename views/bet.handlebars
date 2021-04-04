@@ -1,0 +1,49 @@
+<div class="row-col d-flex flex-wrap justify-content-center col-sm-12 Border">
+    <div class="row-col col-12 d-flex flex-wrap ">
+        <div class="row-col col-12 d-flex flex-wrap justify-content-between">
+            <div class="col-6">
+                <h1 class="newsHead">
+                    Live Bets
+                </h1>
+            </div>
+        </div>
+        <div class="row-col col-12 d-flex flex-wrap justify-content-center">
+            <!-- CARDS -->
+            <div class="card shadow-effect  d-flex flex-wrap col-sm-10 justify-content-center mobile">
+
+                <div class="card-body col-12 d-flex flex-wrap justify-content-center mobile">
+                    <form class="row gy-2 gx-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="bet">I bet</label>
+                        <select type="form-select" class="form-control bg-dark border-success text-white"
+                            id="winner">
+                            
+                            <option selected>{{render_team_name HomeTeamID}}</option>
+                            <option value="Team 2">{{render_team_name AwayTeamID}}</option>
+                            
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <label for="beats">Beats</label>
+                        <select type="form-select" class="form-control bg-dark border-success text-white"
+                            id="loser">
+                            <option selected>{{log render_team_name AwayTeamID}}</option>
+                            <option value="Team 1">{{render_team_name HomeTeamID}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-auto">
+                        <label for="wager">Wager</label>
+                        <input type="number" class="form-control bg-dark border-success text-white"
+                            id="wager" placeholder="5.00">
+                    </div>
+                    
+                </form>
+                <div class="modal-footer bg-dark">
+                        <button type="button" class="btn btn-danger tooltip-test" title="Once bets are placed they cannot be withdrawn!">Place Bet</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

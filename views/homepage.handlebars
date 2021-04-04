@@ -92,13 +92,14 @@
                         <div class="col-sm-12 time">{{format_date DateTime}} @ {{format_time DateTime}}</div>
                     </div>
                     <div class="col-12 d-flex justify-content-center">
-                        <a href="#" class="btn btn-primary news-btn pulse">Place Wager</a>
+                        <a href="/bet/{{GameID}}" class="btn btn-primary news-btn pulse" >Place Wager</a>
                     </div>
                     <!-- ACCORDION -->
                     <!-- NEED TO CHANGE THE IDS DYNAMICALLY FOR ACCORDION -->
                     <!--                                        THE ID HERE MUST MATCH BELOW -->
                     <div class="d-flex col-12 justify-content-center table-text-mobile" id="accordion-{{GameID}}">
                         <!-- START OF SINGLE GAME INFO DIV -->
+                        
                         <div class="card game-card d-flex flex-wrap col-10 justify-content-center game-btn-ctnr">
                             <!-- NEED TO CHANGE THE IDS DYNAMICALLY FOR ACCORDION -->
                             <!--                                        THE ID HERE MUST MATCH BELOW -->
@@ -168,6 +169,7 @@
                 </div>
             </div>
         </div>
+        
         {{/each}}
         <!-- END OF SINGLE GAME INFO DIV -->
 

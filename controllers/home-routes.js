@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
         return response
     }
     async function getGames(){
-        date = '2021-APR-03'
+        date = '2021-APR-04'
         let response = await  
         fetch(`https://fly.sportsdata.io/v3/nba/scores/json/GamesByDate/${date}`, {
             method: 'GET',
@@ -43,8 +43,8 @@ router.get('/', (req, res) => {
             const data2 = JSON.stringify(newsData)
             const games = JSON.parse(data1)
             const news = JSON.parse(data2)
-            console.log(games)
-            console.log(news)
+            //console.log(games)
+            //console.log(news)
             
             res.render('homepage',{
                 news, games 
@@ -81,5 +81,29 @@ router.get('/', (req, res) => {
 
 //     res.render('login');
 //   });
+router.get('/bet/:id', (req,res) => {
+    date = '2021-APR-04'
+    let id = req.params.id
+    fetch(`https://fly.sportsdata.io/v3/nba/scores/json/GamesByDate/${date}`, {
+        method: 'GET',
+        headers: {
+            'Ocp-Apim-Subscription-Key': process.env.KEY
+        }
+    })
+        .then(res => res.json())
+        .then(games => {
+            //let game = JSON.stringify(games)
+            //let game1 = JSON.parse(game)
+            let singleGame = JSON.stringify(games.filter(data => data.GameID === ('16227')))
+            console.log(singleGame)
+            let game = JSON.parse(singleGame)
+            console.log(game)
+            res.render('bet', {
+                game
+            })
+        });
+    
+});
+
 
 module.exports = router;
