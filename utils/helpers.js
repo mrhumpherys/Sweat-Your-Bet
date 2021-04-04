@@ -35,9 +35,6 @@ module.exports = {
 
     render_team_logo: (id, logo) => {
 
-
-
-
         if (id === 1) {
             logo = "https://upload.wikimedia.org/wikipedia/en/0/02/Washington_Wizards_logo.svg"
             return logo;
@@ -159,6 +156,129 @@ module.exports = {
             return logo;
         }
 
-    }
+    },
+    render_team_name: (id, name) => {
+
+        if (id === 1) {
+            name = "Wizards"
+            return name;
+        }
+        if (id === 2) {
+            name = "Hornets"
+            return name;
+        }
+        if (id === 3) {
+            name = "Hawks"
+            return name;
+        }
+        if (id === 4) {
+            name = "Heat"
+            return name;
+        }
+        if (id === 5) {
+            name = "Magic"
+            return name;
+        }
+        if (id === 6) {
+            name = "Knicks"
+            return name;
+        }
+        if (id === 7) {
+            name = "76ers"
+            return name;
+        }
+        if (id === 8) {
+            name = "Nets"
+            return name;
+        }
+        if (id === 9) {
+            name = "Celtics"
+            return name;
+        }
+        if (id === 10) {
+            name = "Raptors"
+            return name;
+        }
+        if (id === 11) {
+            name = "Bulls"
+            return name;
+        }
+        if (id === 12) {
+            name = "Cavaliers"
+            return name;
+        }
+        if (id === 13) {
+            name = "Pacers"
+            return name;
+        }
+        if (id === 14) {
+            name = "Pistons"
+            return name;
+        }
+        if (id === 15) {
+            name = "Bucks"
+            return name;
+        }
+        if (id === 16) {
+            name = "Timberwolves"
+            return name;
+        }
+        if (id === 17) {
+            name = "Jazz"
+            return name;
+        }
+        if (id === 18) {
+            name = "Thunder"
+            return name;
+        }
+        if (id === 19) {
+            name = "Trail Blazers"
+            return name;
+        }
+        if (id === 20) {
+            name = "Denver Nuggets"
+            return name;
+        }
+        if (id === 21) {
+            name = "Memphis Grizzlies"
+            return name;
+        }
+        if (id === 22) {
+            name = "Rockets"
+            return name;
+        }
+        if (id === 23) {
+            name = "Pelicans"
+            return name;
+        }
+        if (id === 24) {
+            name = "Spurs"
+            return name;
+        }
+        if (id === 25) {
+            name = "Mavericks"
+            return name;
+        }
+        if (id === 26) {
+            name = "Warriors"
+            return name;
+        }
+        if (id === 27) {
+            name = "Lakers"
+            return name;
+        }
+        if (id === 28) {
+            name = "Clippers"
+            return name;
+        }
+        if (id === 29) {
+            name = "Suns"
+            return name;
+        }
+        if (id === 30) {
+            name = "Kings"
+            return name;
+        }
+    },
 
 }
