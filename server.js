@@ -1,3 +1,4 @@
+
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -46,3 +47,10 @@ app.use(require('./controllers/'));
 sequelize.sync({ force: false}).then(() => {
   app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
 });
+
+if(process.env.NODE_ENV !== 'production') {
+  const stripeSecretKey = process.env.STRIPE_SECRET_KEY
+  const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
+
+  console.log(stripeSecretKey, stripePublicKey);
+}
