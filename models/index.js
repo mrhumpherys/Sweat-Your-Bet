@@ -3,8 +3,12 @@ const Bet = require('./Bet');
 const Game = require('./Game');
 
 //! TODO
-Bet.hasOne(Game, {
-  foreignKey: 'game_id',
+User.hasMany(Bet,{
+  foreignKey: 'user_id'
 });
+Bet.hasMany(User,{
+  foreignKey: "bet_id"
+})
+
 
 module.exports = { User, Bet, Game };

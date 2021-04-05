@@ -14,19 +14,26 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  host_id = req.body.host_id;
+  host_id = req.session.user_id;
   wager = req.body.wager;
   game_id = req.body.game_id;
-  let bet = await Bet.create({
+  pick_team_id = req.body.pick_team_id;
+ Bet.create({
     host_id,
     wager,
     game_id,
+    pick_team_id,
+  }).
+  then(dbBetData => res.json(dbBetData))
+  .catch(err => {
+      console.log(err);
+      res.status(400).json(err);
   });
 
-  let user = await User.findByPk(host_id);
-  user.bet(wager);
-  user.save();
-  res.json(bet);
+  // let user = await User.findByPk(host_id);
+  // user.bet(wager);
+  // user.save();
+  // res.json(bet);
 });
 
 //! TODO

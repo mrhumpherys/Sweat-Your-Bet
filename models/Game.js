@@ -14,33 +14,33 @@ CREATE TABLE Game (
 */
 //! TODO
 
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+// const { Model, DataTypes } = require('sequelize');
+// const sequelize = require('../config/connection');
 
-class Game extends Model {}
+// class Game extends Model {}
 
-Game.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
-      autoIncrement: true,
-    },
-    DateTime: DataTypes.DATE,
-    Status: DataTypes.STRING,
-    HomeTeamID: DataTypes.INTEGER,
-    HomeTeam: DataTypes.STRING,
-    AwayTeamID: DataTypes.INTEGER,
-    AwayTeamScore: DataTypes.INTEGER,
-    HomeTeamScore: DataTypes.INTEGER,
-    HomeTeamWin: DataTypes.BOOLEAN,
-  },
-  {
-    sequelize,
-    freezeTableName: true,
-    modelName: 'game',
-  }
-);
+// Game.init(
+//   {
+//     id: {
+//       type: DataTypes.INTEGER,
+//       primaryKey: true,
+//       allowNull: false,
+//       autoIncrement: true,
+//     },
+//     DateTime: DataTypes.DATE,
+//     Status: DataTypes.STRING,
+//     HomeTeamID: DataTypes.INTEGER,
+//     HomeTeam: DataTypes.STRING,
+//     AwayTeamID: DataTypes.INTEGER,
+//     AwayTeamScore: DataTypes.INTEGER,
+//     HomeTeamScore: DataTypes.INTEGER,
+//     HomeTeamWin: DataTypes.BOOLEAN,
+//   },
+//   {
+//     sequelize,
+//     freezeTableName: true,
+//     modelName: 'game',
+//   }
+// );
 
-module.exports = Game;
+// module.exports = Game;
