@@ -50,20 +50,9 @@ async function loginFormHandler(event) {
         }
     }
 }
-async function logout() {
-    const response = await fetch('/api/users/logout', {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' }
-    });
 
-    if (response.ok) {
-        document.location.replace('/');
-    } else {
-        alert(response.statusText);
-    }
-}
 
-document.querySelector('#logout').addEventListener('click', logout);
+
 
 document.querySelector('#signup').addEventListener('click', signupFormHandler);
 document.querySelector('#login').addEventListener('click', loginFormHandler);

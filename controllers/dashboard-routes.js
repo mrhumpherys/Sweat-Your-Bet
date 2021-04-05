@@ -7,6 +7,10 @@ const fetch = require('node-fetch');;
 
 
 router.get('/', (req, res) => {
+    let logged = req.session.loggedIn
+    if(!logged){
+        res.redirect('/')
+    }
 
     // ALSO NEED TO GET USER STATS TO RENDER FOR DASHBOARD VIEW
     // WILL NEED TO CONVERT TO ASYNC WHEN GRABBING BOTH DATA SETS
@@ -42,7 +46,7 @@ router.get('/', (req, res) => {
         .then(games => {
             console.log('GAME DATA I WANT:', games)
             res.render('dashboard', {
-                games
+                games, loggedIn: true
             })
         });
 });
@@ -56,7 +60,9 @@ router.get("/activeBets", (req, res) => {
     //        challenger_id: req.session.user_id
     //    }
     //})
-    res.render('activeBets');
+    res.render('activeBets', {
+        loggedIn: req.session.loggedIn
+    });
     return;
 
 

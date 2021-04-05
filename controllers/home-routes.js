@@ -47,7 +47,7 @@ router.get('/', (req, res) => {
             //console.log(news)
             
             res.render('homepage',{
-                news, games 
+                news, games, loggedIn: req.session.loggedIn
 
             })
         })

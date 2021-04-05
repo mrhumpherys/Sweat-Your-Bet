@@ -14,7 +14,7 @@
         <div class="col-12 d-flex flex-wrap justify-content-center">
             <div class="card shadow-effect col-lg-8">
                 <div class="imgBackground col-lg-3 col-md-3 col-sm-3 col-xl-3">
-                    <img class="card-img-top" src="{{render_team_logo TeamID}}" alt="Card image cap">
+                    <img class="card-img-top" src="{{render_team_logo TeamID}}" alt="{{render_team_name TeamID}}">
                 </div>
                 <div class="col-12 mt-3 text-left">Published {{TimeAgo}}</div>
                 <div class="card-body">
@@ -60,13 +60,13 @@
                     <!-- HANDLEBARS HERE FOR TEAM LOGOS -->
                     <!--  -->
                     <div class="imgBackground-dash d-flex flex-wrap col-6 pic-1"><img
-                            src="{{render_team_logo HomeTeamID}}" alt="Card image cap">
+                            src="{{render_team_logo HomeTeamID}}" alt="{{render_team_name HomeTeamID}}'s logo">
                     </div>
                     <!--  -->
                     <!-- HANDLEBARS HERE FOR TEAM LOGOS -->
                     <!--  -->
                     <div class="imgBackground-dash col-6 d-flex flex-wrap pic-2"><img
-                            src="{{render_team_logo AwayTeamID}}" alt="Card image cap">
+                            src="{{render_team_logo AwayTeamID}}" alt="{{render_team_name AwayTeamID}}'s logo">
                     </div>
                 </div>
                 <div class="card-body col-12 d-flex flex-wrap justify-content-center">
