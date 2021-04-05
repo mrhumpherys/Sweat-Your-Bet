@@ -2,13 +2,14 @@ const router = require('express').Router();
 const { Bet, Game, User } = require('../models');
 const NBA = require('../db/_data/nba');
 const fetch = require('node-fetch');;
+const moment = require('moment');
 
 
 
 
 router.get('/', (req, res) => {
     let logged = req.session.loggedIn
-    if(!logged){
+    if (!logged) {
         res.redirect('/')
     }
 
@@ -35,7 +36,7 @@ router.get('/', (req, res) => {
     // .catch(err => console.log(err))
     // =================================================================================
 
-    date = '2021-APR-03'
+    date = (moment(new Date()).format("YYYY-MM-DD"));
     fetch(`https://fly.sportsdata.io/v3/nba/scores/json/GamesByDate/${date}`, {
         method: 'GET',
         headers: {
@@ -80,9 +81,6 @@ router.get("/history", (req, res) => {
     //})
     res.render('history');
     return;
-
-
-
 });
 
 module.exports = router;
