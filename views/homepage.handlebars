@@ -91,7 +91,7 @@
                         <div class="col-sm-12 time">{{format_date DateTime}} @ {{format_time DateTime}}</div>
                     </div>
 
-
+                    {{#if loggedIn}}
                     {{!-- TESTING ADDING ANOTHER ACCORDION FOR BETS --}}
                     <div class="d-flex col-12 justify-content-center table-text-mobile" id="accordion-{{@index}}">
                         <!-- START OF SINGLE GAME INFO DIV -->
@@ -144,19 +144,18 @@
                                                         <div
                                                             class="card-body col-12 d-flex flex-wrap justify-content-center mobile">
                                                             <form
-                                                                class="row gy-2 gx-3 d-flex flex-wrap justify-content-start">
+                                                                class="row gy-2 gx-3 d-flex flex-wrap justify-content-start test">
                                                                 <div class="col-auto">
                                                                     <label for="bet">I bet</label>
                                                                     <select type="form-select"
-                                                                        class="form-control bg-dark border-success text-white">
+                                                                        class="form-control bg-dark border-success text-white winner-{{GameID}}">
 
-                                                                        <option class="winner" data-winnerID="{{HomeTeamID}}" selected>{{render_team_name HomeTeamID}}
+                                                                        <option value="{{HomeTeamID}}"selected>{{render_team_name HomeTeamID}}
                                                                         </option>
                                                                         <option
-                                                                        class="winner" data-winnerID="{{AwayTeamID}}"
-                                                                            value="Team 2">{{render_team_name
+                                                                        data-winnerID="{{AwayTeamID}}"
+                                                                            value="{{AwayTeamID}}">{{render_team_name
                                                                             AwayTeamID}}</option>
-
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-auto">
@@ -171,17 +170,18 @@
                                                                 </div>
 
                                                                 <div class="col-auto">
-                                                                    <label for="wager">Wager</label>
+                                                                    <label for="wager" >Wager</label>
                                                                     <input type="number"
-                                                                        class="form-control bg-dark border-success text-white wager"
+                                                                        class="form-control bg-dark border-success text-white wager-{{GameID}}"
                                                                         placeholder="5.00">
                                                                 </div>
 
                                                                 <div class="col-12 place-bet-btn"
                                                                     data-GameID="{{GameID}}" data-userID="{{userID}}">
                                                                     <button type="button"
-                                                                        class="btn btn-danger tooltip-test mobile "
-                                                                        title="Once bets are placed they cannot be withdrawn!">Place
+                                                                        class="btn btn-danger tooltip-test mobile wager"
+                                                                        title="Once bets are placed they cannot be withdrawn!"
+                                                                        data-GameID="{{GameID}}">Place
                                                                         Bet</button>
                                                                 </div>
                                                             </form>
@@ -198,7 +198,7 @@
                     </div>
                     <!-- END ACCORDION -->
                     {{!-- END TESTING --}}
-
+                    {{/if}}
 
                     <!-- ACCORDION -->
                     <!-- NEED TO CHANGE THE IDS DYNAMICALLY FOR ACCORDION -->
