@@ -14,6 +14,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+
   host_id = req.session.user_id;
   wager = req.body.wager;
   game_id = req.body.game_id;
