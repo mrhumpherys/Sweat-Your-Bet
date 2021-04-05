@@ -63,23 +63,19 @@ Bet.init(
       type: DataTypes.INTEGER,
       allowNull:false,
     },
-    // pickTeamID: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   unique: true,
-    //   references: {
-    //     model: 'team',
-    //     key: 'id',
-    //   },
-    // },
-    // win: {
-    //   type: DataTypes.BOOLEAN,
-    //   allowNull: false,
-    //   unique: true,
-    //   references: {
-    //     model: true,
-    //   },
-    // },
+    pickTeamID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
+    },
+    win: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: null,
+      // references: {
+      //   model: true,
+      // },
+    },
   },
   {
     sequelize,

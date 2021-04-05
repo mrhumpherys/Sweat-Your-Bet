@@ -5,17 +5,17 @@ async function addBetHandler(event) {
     event.preventDefault();
     console.log(" HERE BITCH")
     let game_id = event.target.getAttribute("data-GameID");
-    let pick_team_id = document.querySelector(`.winner-${game_id}`).value
+    let pickTeamID = document.querySelector(`.winner-${game_id}`).value
     let wager = document.querySelector(`.wager-${game_id}`).value
 
-    console.log(game_id, pick_team_id, wager)
+    console.log(game_id, parseInt(pickTeamID), wager)
     const response = await fetch(`/api/bets/`, {
 
         method: 'POST',
         body: JSON.stringify({
             wager,
             game_id,
-            pick_team_id
+            pickTeamID
         }),
         headers: {
             'Content-Type': 'application/json'

@@ -18,12 +18,12 @@ router.post("/", async (req, res) => {
   host_id = req.session.user_id;
   wager = req.body.wager;
   game_id = req.body.game_id;
-  pick_team_id = req.body.pick_team_id;
+  pickTeamID = req.body.pickTeamID;
  Bet.create({
     host_id,
     wager,
     game_id,
-    pick_team_id,
+    pickTeamID,
   }).
   then(dbBetData => res.json(dbBetData))
   .catch(err => {
@@ -64,3 +64,6 @@ router.put("/:id", (req, res) => {
 // bet.update({challenger_id: req.session.user_id}
 
 module.exports = router;
+
+
+
