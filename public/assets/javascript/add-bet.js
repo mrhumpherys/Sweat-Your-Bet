@@ -3,12 +3,15 @@
 function addBetHandler(event) {
 
     event.preventDefault();
-    console.log(event.target)
-    const game_id = document.querySelector('.place-bet-btn').getAttribute('data-GameID')
-    // const user_id = session.user_id
-    const host_pick = (event.target).querySelector('.winner').getAttribute("data-winnerID")
+    let game_id = event.target.getAttribute("data-GameID");
+    let pick_team_id = document.querySelector(`.winner-${game_id}`).value
+    let wager = document.querySelector(`.wager-${game_id}`).value
 
-    console.log("game id" + game_id, "+\n" + "+\n" + "hostPick" + host_pick)
+
+    // const user_id = session.user_id
+    // const host_pick = (event.target).querySelector('.winner').getAttribute("data-winnerID")
+
+    console.log("game id", " ", game_id, "\n", "\n", "hostPick", " ", pick_team_id, " " + wager)
 
     // if (comment_text) {
     //     console.log(user_id)
