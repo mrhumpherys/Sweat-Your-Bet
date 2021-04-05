@@ -91,7 +91,7 @@
                         <div class="col-sm-12 time">{{format_date DateTime}} @ {{format_time DateTime}}</div>
                     </div>
 
-                    
+
                     {{!-- TESTING ADDING ANOTHER ACCORDION FOR BETS --}}
                     <div class="d-flex col-12 justify-content-center table-text-mobile" id="accordion-{{@index}}">
                         <!-- START OF SINGLE GAME INFO DIV -->
@@ -150,10 +150,10 @@
                                                                     <select type="form-select"
                                                                         class="form-control bg-dark border-success text-white winner-{{GameID}}">
 
-                                                                        <option value="{{HomeTeamID}}"selected>{{render_team_name HomeTeamID}}
+                                                                        <option value="{{HomeTeamID}}" selected>
+                                                                            {{render_team_name HomeTeamID}}
                                                                         </option>
-                                                                        <option
-                                                                        data-winnerID="{{AwayTeamID}}"
+                                                                        <option data-winnerID="{{AwayTeamID}}"
                                                                             value="{{AwayTeamID}}">{{render_team_name
                                                                             AwayTeamID}}</option>
                                                                     </select>
@@ -170,7 +170,7 @@
                                                                 </div>
 
                                                                 <div class="col-auto">
-                                                                    <label for="wager" >Wager</label>
+                                                                    <label for="wager">Wager</label>
                                                                     <input type="number"
                                                                         class="form-control bg-dark border-success text-white wager-{{GameID}}"
                                                                         placeholder="5.00">
@@ -198,7 +198,7 @@
                     </div>
                     <!-- END ACCORDION -->
                     {{!-- END TESTING --}}
-                    
+
                     {{!-- ACTIVE BETS BELOW!!! --}}
                     <!-- ACCORDION -->
                     <!-- NEED TO CHANGE THE IDS DYNAMICALLY FOR ACCORDION -->
@@ -235,7 +235,7 @@
                                         class="card-body d-flex flex-wrap game-card-body justify-content-center col-12">
                                         <table class="table table-striped table-dark ">
                                             <thead>
-                                              
+
                                                 <tr>
 
                                                     <th scope="col">CHALLENGER</th>
@@ -245,16 +245,16 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                               {{#each bet}}
+                                                {{#each bet}}
                                                 <tr>
-                                                    <th scope="row">{{host_id.username}}</th>
-                                                    <td>${{wager}}</td>
-                                                    <td>{{render_team_name pickTeamID}}</td>
+                                                    <th scope="row">{{this.host_id}}</th>
+                                                    <td>${{this.wager}}</td>
+                                                    <td>{{render_team_name this.pickTeamID}}</td>
                                                     <td><a href="#" class="btn btn-primary news-btn mobile">ACCEPT</a>
                                                     </td>
                                                 </tr>
                                                 {{/each}}
-                                               
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -275,6 +275,7 @@
 </div>
 <!-- END GAMES -->
 <!-- BETS -->
+
 <div class="row-col d-flex flex-wrap justify-content-center col-sm-12 Border">
     <div class="row-col col-12 d-flex flex-wrap ">
         <div class="row-col col-12 d-flex flex-wrap justify-content-between">
@@ -300,41 +301,23 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{#each bet}}
                             <tr>
-                                <th scope="row">Dallas Maverics beat Chicago Bulls</th>
+                                <th scope="row">{{render_team_name pickTeamID}} </th>
+                                <td></td>
+                                <td>{{host_id.username}}</td>
+                                <td>$100</td>
+                                <td><a href="#" class="btn btn-danger mobile">Challenge Bet</a></td>
+                            </tr>
+                            {{/each}}
+                            <tr>
+                                <th scope="row">TEAM NAME</th>
                                 <td>Today at 9pm</td>
                                 <td>Cody</td>
                                 <td>$100</td>
                                 <td><a href="#" class="btn btn-danger mobile">Challenge Bet</a></td>
                             </tr>
-                            <tr>
-                                <th scope="row">Dallas Maverics beat Chicago Bulls</th>
-                                <td>Today at 9pm</td>
-                                <td>Cody</td>
-                                <td>$100</td>
-                                <td><a href="#" class="btn btn-danger mobile">Challenge Bet</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Dallas Maverics beat Chicago Bulls</th>
-                                <td>Today at 9pm</td>
-                                <td>Cody</td>
-                                <td>$100</td>
-                                <td><a href="#" class="btn btn-danger mobile">Challenge Bet</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Dallas Maverics beat Chicago Bulls</th>
-                                <td>Today at 9pm</td>
-                                <td>Cody</td>
-                                <td>$100</td>
-                                <td><a href="#" class="btn btn-danger mobile">Challenge Bet</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Dallas Maverics beat Chicago Bulls</th>
-                                <td>Today at 9pm</td>
-                                <td>Cody</td>
-                                <td>$100</td>
-                                <td><a href="#" class="btn btn-danger mobile">Challenge Bet</a></td>
-                            </tr>
+                        
                         </tbody>
                     </table>
 
@@ -344,6 +327,7 @@
         </div>
     </div>
 </div>
+
 {{#if loggedIn}}
 <script src="./assets/javascript/add-bet.js"></script>
-{{/if}} 
+{{/if}}

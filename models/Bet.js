@@ -66,7 +66,6 @@ Bet.init(
     pickTeamID: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
     },
     win: {
       type: DataTypes.BOOLEAN,
