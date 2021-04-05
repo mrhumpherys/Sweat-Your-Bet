@@ -4,7 +4,7 @@ const { User, Bet, Game } = require("../../models");
 // Get all bets
 router.get("/", (req, res) => {
   Bet.findAll({
-    include: [{ model: Game }],
+    // include: [{ model: Game }],
   })
     .then((dbBetData) => res.json(dbBetData))
     .catch((err) => {

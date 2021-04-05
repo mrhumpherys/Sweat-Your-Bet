@@ -91,7 +91,7 @@
                         <div class="col-sm-12 time">{{format_date DateTime}} @ {{format_time DateTime}}</div>
                     </div>
 
-                    {{#if loggedIn}}
+                    
                     {{!-- TESTING ADDING ANOTHER ACCORDION FOR BETS --}}
                     <div class="d-flex col-12 justify-content-center table-text-mobile" id="accordion-{{@index}}">
                         <!-- START OF SINGLE GAME INFO DIV -->
@@ -198,7 +198,7 @@
                     </div>
                     <!-- END ACCORDION -->
                     {{!-- END TESTING --}}
-                    {{/if}}
+             
 
                     <!-- ACCORDION -->
                     <!-- NEED TO CHANGE THE IDS DYNAMICALLY FOR ACCORDION -->
@@ -354,4 +354,6 @@
         </div>
     </div>
 </div>
+{{#if loggedIn}}
 <script src="./assets/javascript/add-bet.js"></script>
+{{/if}} 
