@@ -1,5 +1,6 @@
 
 
+const { min } = require('../models/User');
 const { teamData } = require('../seeds/team-seeds')
 
 module.exports = {
@@ -12,13 +13,14 @@ module.exports = {
     format_time: (date) => {
         let newDate = date.split('T')[1];
         let time = newDate.split(":")[0];
+        let mins = newDate.split(":")[1];
         if (time > 12) {
             let formatted_time = time -= 12
-            let newTime = formatted_time + ':00pm'
+            let newTime = formatted_time + ":" + mins
             return newTime;
         } else {
             let formatted_time = time.split("0");
-            let newTime = formatted_time + ':00am';
+            let newTime = formatted_time + ":" + mins;
             return newTime
         }
     },
@@ -34,7 +36,7 @@ module.exports = {
 
 
     render_team_logo: (id, logo) => {
-        
+
         if (id === 1) {
             logo = "https://upload.wikimedia.org/wikipedia/en/0/02/Washington_Wizards_logo.svg"
             return logo;
@@ -281,6 +283,6 @@ module.exports = {
         }
     },
 
-    
+
 
 }

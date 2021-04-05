@@ -4,10 +4,13 @@ const Game = require('./Game');
 
 //! TODO
 User.hasMany(Bet,{
-  foreignKey: 'user_id'
+  foreignKey: 'bet_id'
 });
 Bet.hasMany(User,{
   foreignKey: "bet_id"
+})
+Bet.belongsTo(User,{
+  foreignKey: "host_id"
 })
 
 

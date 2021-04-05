@@ -36,7 +36,6 @@ Bet.init(
     host_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
       references: {
         model: 'user',
         key: 'id',
@@ -45,7 +44,6 @@ Bet.init(
     challenger_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      unique: true,
       references: {
         model: 'user',
         key: 'id',
