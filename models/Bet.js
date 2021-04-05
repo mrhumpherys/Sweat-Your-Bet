@@ -53,7 +53,11 @@ Bet.init(
     // },
     game_id: {
       type: DataTypes.INTEGER,
-      // allowNull: false,
+      allowNull: false,
+      references: {
+        model: 'game',
+        key: 'id',
+      },
     },
     pick_team_id: {
       type: DataTypes.STRING,

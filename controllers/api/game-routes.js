@@ -27,4 +27,6 @@ router.get('/:id', async (req, res) => {
   res.json(game);
 });
 
+router.post('/', async (req, res) => {});
+
 module.exports = router;
