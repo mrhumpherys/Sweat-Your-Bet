@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
             const games = JSON.parse(data1)
             const news = JSON.parse(data2)            
             res.render('homepage',{
-                news, games, loggedIn: req.session.loggedIn
+                news, games, loggedIn: req.session.loggedIn, 
             })
         })
     })
@@ -75,7 +75,7 @@ router.get('/bet/:id', (req,res) => {
     })
         .then(res => res.json())
         .then(games => {
-            console.log('GAME DATA I WANT:', games)
+            
             res.render(`bet/${req.params.id}`, {
                 games
             })

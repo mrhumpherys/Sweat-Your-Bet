@@ -81,18 +81,19 @@
         {{!-- START LOOP HERE --}}
         {{#each games}}
         <!-- ACCORDION -->
-        <div class="d-flex flex-wrap col-sm-12 justify-content-center" id="accordion{{GameID}}" data-gameID="{{GameID}}">
+        <div class="d-flex flex-wrap col-sm-12 justify-content-center" id="accordion{{GameID}}">
             <!-- START OF SINGLE GAME INFO DIV -->
             <div class="card game-card d-flex flex-wrap col-sm-12 justify-content-center">
                 <div class="d-flex flex-wrap row row-col-sm-12 justify-content-start card-header" id="headingOne">
                     <div class="col-md-12 col-sm-12 col-lg-6 d-flex flex-wrap justify-content-start text-start">
-                        <div class="col-sm-12 teams">{{render_team_name HomeTeamID}} VS {{render_team_name AwayTeamID}}</div>
+                        <div class="col-sm-12 teams">{{render_team_name HomeTeamID}} VS {{render_team_name AwayTeamID}}
+                        </div>
                     </div>
 
                     <div class=" col-md-12 col-sm-12 col-lg-3 d-flex flex-wrap justify-content-start text-align-start">
                         <div class="col-sm-12 time">{{format_date DateTime}} @ {{format_time DateTime}}</div>
                     </div>
-                    
+
                     {{!-- TESTING ADDING ANOTHER ACCORDION FOR BETS --}}
                     <div class="d-flex col-12 justify-content-center table-text-mobile" id="accordion-{{@index}}">
                         <!-- START OF SINGLE GAME INFO DIV -->
@@ -111,7 +112,8 @@
                                             data-toggle="collapse" data-target="#collapse-{{@index}}"
                                             aria-expanded="true" aria-controls="collapse-{{@index}}">
                                             <div class="col-12 d-flex justify-content-center">
-                                                <a class="btn btn-primary news-btn game-actBet-btn ">Place
+                                                <a class="btn btn-primary news-btn game-actBet-btn"
+                                                    data-gameID="{{GameID}}">Place
                                                     Wager</a>
                                             </div>
 
@@ -144,7 +146,8 @@
 
                                                         <div
                                                             class="card-body col-12 d-flex flex-wrap justify-content-center mobile">
-                                                            <form class="row gy-2 gx-3 d-flex flex-wrap justify-content-start">
+                                                            <form
+                                                                class="row gy-2 gx-3 d-flex flex-wrap justify-content-start">
                                                                 <div class="col-auto">
                                                                     <label for="bet">I bet</label>
                                                                     <select type="form-select"
@@ -178,7 +181,7 @@
                                                                 </div>
 
                                                                 <div class="col-12">
-                                                                    <button type="button"
+                                                                    <button id="place-bet-btn" type="button"
                                                                         class="btn btn-danger tooltip-test mobile"
                                                                         title="Once bets are placed they cannot be withdrawn!">Place
                                                                         Bet</button>
@@ -210,46 +213,47 @@
 
                 </div>
                 <div class="d-flex justify-content-center col-12 mobile">
-                    <div id="collapse{{GameID}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion{{GameID}}">
-                    <div class="card-body game-card-body d-flex flex-wrap justify-content-center col-12">
-                        <table class="table table-striped table-dark">
-                            <thead>
-                                <tr>
+                    <div id="collapse{{GameID}}" class="collapse" aria-labelledby="headingOne"
+                        data-parent="#accordion{{GameID}}">
+                        <div class="card-body game-card-body d-flex flex-wrap justify-content-center col-12">
+                            <table class="table table-striped table-dark">
+                                <thead>
+                                    <tr>
 
-                                    <th scope="col">CHALLENGER</th>
-                                    <th scope="col">WAGER</th>
-                                    <th scope="col">PICK</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">USER_NAME</th>
-                                    <td>$100</td>
-                                    <td>TEAM 2</td>
-                                    <td><a href="#" class="btn btn-primary news-btn">ACCEPT</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">USER_NAME</th>
-                                    <td>$50</td>
-                                    <td>TEAM 1</td>
-                                    <td><a href="#" class="btn btn-primary news-btn">ACCEPT</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">USER_NAME</th>
-                                    <td>$10</td>
-                                    <td>TEAM 2</td>
-                                    <td><a href="#" class="btn btn-primary news-btn">ACCEPT</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                        <th scope="col">CHALLENGER</th>
+                                        <th scope="col">WAGER</th>
+                                        <th scope="col">PICK</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">USER_NAME</th>
+                                        <td>$100</td>
+                                        <td>TEAM 2</td>
+                                        <td><a href="#" class="btn btn-primary news-btn">ACCEPT</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">USER_NAME</th>
+                                        <td>$50</td>
+                                        <td>TEAM 1</td>
+                                        <td><a href="#" class="btn btn-primary news-btn">ACCEPT</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">USER_NAME</th>
+                                        <td>$10</td>
+                                        <td>TEAM 2</td>
+                                        <td><a href="#" class="btn btn-primary news-btn">ACCEPT</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                </div>
-                
+
             </div>
             <!-- END OF SINGLE GAME INFO DIV -->
         </div>
@@ -260,3 +264,4 @@
     <!-- END DIV CONTAINING ACCORDION -->
 </div>
 <!-- END GAMES -->
+<script src="/javascript/add-bet.js"></script>

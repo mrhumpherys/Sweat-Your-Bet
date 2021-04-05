@@ -143,16 +143,18 @@
 
                                                         <div
                                                             class="card-body col-12 d-flex flex-wrap justify-content-center mobile">
-                                                            <form class="row gy-2 gx-3 d-flex flex-wrap justify-content-start">
+                                                            <form
+                                                                class="row gy-2 gx-3 d-flex flex-wrap justify-content-start">
                                                                 <div class="col-auto">
                                                                     <label for="bet">I bet</label>
                                                                     <select type="form-select"
-                                                                        class="form-control bg-dark border-success text-white"
-                                                                        id="winner">
+                                                                        class="form-control bg-dark border-success text-white">
 
-                                                                        <option selected>{{render_team_name HomeTeamID}}
+                                                                        <option class="winner" data-winnerID="{{HomeTeamID}}" selected>{{render_team_name HomeTeamID}}
                                                                         </option>
-                                                                        <option value="Team 2">{{render_team_name
+                                                                        <option
+                                                                        class="winner" data-winnerID="{{AwayTeamID}}"
+                                                                            value="Team 2">{{render_team_name
                                                                             AwayTeamID}}</option>
 
                                                                     </select>
@@ -160,8 +162,7 @@
                                                                 <div class="col-auto">
                                                                     <label for="beats">Beats</label>
                                                                     <select type="form-select"
-                                                                        class="form-control bg-dark border-success text-white"
-                                                                        id="loser">
+                                                                        class="form-control bg-dark border-success text-white loser">
                                                                         <option selected>{{render_team_name
                                                                             AwayTeamID}}</option>
                                                                         <option value="Team 1">{{render_team_name
@@ -172,13 +173,14 @@
                                                                 <div class="col-auto">
                                                                     <label for="wager">Wager</label>
                                                                     <input type="number"
-                                                                        class="form-control bg-dark border-success text-white"
-                                                                        id="wager" placeholder="5.00">
+                                                                        class="form-control bg-dark border-success text-white wager"
+                                                                        placeholder="5.00">
                                                                 </div>
 
-                                                                <div class="col-12">
+                                                                <div class="col-12 place-bet-btn"
+                                                                    data-GameID="{{GameID}}" data-userID="{{userID}}">
                                                                     <button type="button"
-                                                                        class="btn btn-danger tooltip-test mobile"
+                                                                        class="btn btn-danger tooltip-test mobile "
                                                                         title="Once bets are placed they cannot be withdrawn!">Place
                                                                         Bet</button>
                                                                 </div>
@@ -352,3 +354,4 @@
         </div>
     </div>
 </div>
+<script src="./assets/javascript/add-bet.js"></script>
