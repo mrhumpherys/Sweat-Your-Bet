@@ -3,7 +3,9 @@ const { Bet, Game, User } = require('../../models');
 // const NBA = require('../db/_data/nba');
 
 router.get('/', async (req, res) => {
-  games = await Game.findAll();
+  games = await Game.findAll({
+    include: Bet,
+  });
   res.json(games);
 });
 

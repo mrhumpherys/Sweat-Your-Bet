@@ -56,18 +56,21 @@ async function seed() {
     host_id: 1,
     wager: 20,
     game_id: 16188,
+    pick_team_id: 1,
   });
 
   await Bet.create({
     host_id: 2,
     wager: 35,
     game_id: 16189,
+    pick_team_id: 2,
   });
 
   await Bet.create({
     host_id: 3,
     wager: 40,
     game_id: 16190,
+    pick_team_id: 4,
   });
 }
 

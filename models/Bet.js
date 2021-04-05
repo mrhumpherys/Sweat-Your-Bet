@@ -36,49 +36,29 @@ Bet.init(
     host_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
     },
-    challenger_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      unique: true,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
+    // challenger_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true
+    // },
     wager: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       primaryKey: true,
     },
-    host_won: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true,
-      defaultValue: null,
-    },
+    // host_won: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: true,
+    //   defaultValue: null,
+    // },
     game_id: {
       type: DataTypes.INTEGER,
       // allowNull: false,
-      unique: true,
-      references: {
-        model: 'game',
-        key: 'id',
-      },
     },
-    // pickTeamID: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   unique: true,
-    //   references: {
-    //     model: 'team',
-    //     key: 'id',
-    //   },
-    // },
+    pick_team_id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     // win: {
     //   type: DataTypes.BOOLEAN,
     //   allowNull: false,
@@ -90,9 +70,9 @@ Bet.init(
   },
   {
     sequelize,
-    timestamps: false,
-    freezeTableName: true,
     underscored: true,
+    timestamps: false,
+    tableName: 'bet',
     modelName: 'bet',
   }
 );

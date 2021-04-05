@@ -1,11 +1,3 @@
-/*
-CREATE TABLE User(
-	id INTEGER AUTO_INCREMENT,
-    firstName VARCHAR(30),
-    PRIMARY KEY (id)
-);
-*/
-//! TODO - UPDATE
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
@@ -38,6 +30,10 @@ User.init(
       validate: {
         isEmail: true,
       },
+    },
+    balance: {
+      type: DataTypes.INTEGER,
+      defaultValue: 100,
     },
   },
   {
