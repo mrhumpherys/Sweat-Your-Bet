@@ -45,7 +45,7 @@ router.get('/', (req, res) => {
     })
         .then(res => res.json())
         .then(games => {
-            console.log('GAME DATA I WANT:', games)
+        
             res.render('dashboard', {
                 games, loggedIn: true
             })

@@ -148,7 +148,7 @@ module.exports = {
             return logo;
         }
         if (id === 29) {
-            logo = "https://upload.wikimedia.org/wikipedia/en/d/dc/Phoenix_Suns_logo.svgg"
+            logo = "https://upload.wikimedia.org/wikipedia/en/d/dc/Phoenix_Suns_logo.svg"
             return logo;
         }
         if (id === 30) {
