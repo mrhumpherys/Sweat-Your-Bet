@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "username": "kurtser",
+    "password": "$2b$10$/4GNto3NXdHtjYJhBF/KQ.mmxBVy4Tj5QMbEleIl8T/T7INCdZlrK",
+    "email": "kpessa@gmail.com",
+    "balance": 100
+  },
+  {
+    "id": 2,
+    "username": "cody",
+    "password": "$2b$10$N8ccWQUzaJ0Fgg829i5u0unZQIHDWYHZTVbtqbBjaFbhy8jXV4hta",
+    "email": "email1@gmail.com",
+    "balance": 100
+  },
+  {
+    "id": 3,
+    "username": "julius",
+    "password": "$2b$10$wUIlJy51oJ7wjyZqGlvcbeX/2nuRjaZRHTIjwmz3.k8eqqFwlPOh.",
+    "email": "email2@gmail.com",
+    "balance": 100
+  },
+  {
+    "id": 4,
+    "username": "anthony",
+    "password": "$2b$10$SsOEMuCyyrh2YD9cpzry1ekZmKJtN1i0Z66n5MZOJX/oGpaYzaBzG",
+    "email": "email3@gmail.com",
+    "balance": 100
+  },
+  {
+    "id": 5,
+    "username": "lphilo0",
+    "password": "8HGpgNE8GRZ8",
+    "email": "jworviell0@ustream.tv",
+    "balance": 125
+  },
+  {
+    "id": 6,
+    "username": "gtritton1",
+    "password": "WuXDpAi",
+    "email": "lcesaric1@google.ca",
+    "balance": 353
+  },
+  {
+    "id": 7,
+    "username": "cstaniland2",
+    "password": "EyFJDKeqcO8",
+    "email": "nsall2@answers.com",
+    "balance": 976
+  },
+  {
+    "id": 8,
+    "username": "htallon3",
+    "password": "n7StLeOJ",
+    "email": "afluck3@google.com.hk",
+    "balance": 177
+  },
+  {
+    "id": 9,
+    "username": "phamlet4",
+    "password": "sPzMQvl2",
+    "email": "oblaskett4@github.com",
+    "balance": 845
+  },
+  {
+    "id": 10,
+    "username": "tirdale5",
+    "password": "4WX2Asu7i",
+    "email": "kmullinger5@opera.com",
+    "balance": 931
+  },
+  {
+    "id": 11,
+    "username": "jwytchard6",
+    "password": "myLoeew47",
+    "email": "lwrightim6@howstuffworks.com",
+    "balance": 504
+  },
+  {
+    "id": 12,
+    "username": "slaurenzi7",
+    "password": "5pBE3iz9T",
+    "email": "dkinnen7@jiathis.com",
+    "balance": 161
+  },
+  {
+    "id": 13,
+    "username": "mharty8",
+    "password": "j3vCzTdCCjS",
+    "email": "bbrion8@bing.com",
+    "balance": 228
+  },
+  {
+    "id": 14,
+    "username": "iprowse9",
+    "password": "soid5rU",
+    "email": "jkuscha9@discovery.com",
+    "balance": 901
+  }
+]
