@@ -7,55 +7,60 @@ const e = require('express');
 
 router.get('/', (req, res) => {
     let logged = req.session.loggedIn
-    if (!logged) {
-        async function getNews() {
-            let response = await
-                fetch(`https://fly.sportsdata.io/v3/nba/scores/json/News`, {
-                    method: 'GET',
-                    headers: {
-                        'Ocp-Apim-Subscription-Key': process.env.KEY
-                    }
-                })
-            return response
-        }
-        async function getGames() {
-            date = (moment(new Date()).format("YYYY-MM-DD"));
-            let response = await
-                fetch(`https://fly.sportsdata.io/v3/nba/scores/json/GamesByDate/${date}`, {
-                    method: 'GET',
-                    headers: {
-                        'Ocp-Apim-Subscription-Key': process.env.KEY
-                    }
-                })
-            return response
-        }
-        getGames()
-            .then(res => res.json())
-            .then(data => {
-                const data1 = JSON.stringify(data)
-                getNews()
-                    .then(res => res.json())
-                    .then(newsData => {
-                        const data2 = JSON.stringify(newsData)
-                        const games = JSON.parse(data1)
-                        const news = JSON.parse(data2)
-                        res.render('homepage', {
-                            news, games, loggedIn: false,
-                        })
-                    })
-            })
-            .catch(err => console.log(err))
-    } else {
+    // if (!logged) {
+    //     async function getNews() {
+    //         let response = await
+    //             fetch(`https://fly.sportsdata.io/v3/nba/scores/json/News`, {
+    //                 method: 'GET',
+    //                 headers: {
+    //                     'Ocp-Apim-Subscription-Key': process.env.KEY
+    //                 }
+    //             })
+    //         return response
+    //     }
+    //     async function getGames() {
+    //         date = (moment(new Date()).format("YYYY-MM-DD"));
+    //         let response = await
+    //             fetch(`https://fly.sportsdata.io/v3/nba/scores/json/GamesByDate/${date}`, {
+    //                 method: 'GET',
+    //                 headers: {
+    //                     'Ocp-Apim-Subscription-Key': process.env.KEY
+    //                 }
+    //             })
+    //         return response
+    //     }
+    //     getGames()
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             const data1 = JSON.stringify(data)
+    //             getNews()
+    //                 .then(res => res.json())
+    //                 .then(newsData => {
+    //                     const data2 = JSON.stringify(newsData)
+    //                     const games = JSON.parse(data1)
+    //                     const news = JSON.parse(data2)
+    //                     const pageData =
+    //                             {
+    //                                 games, news, 
+    //                             }
+    //                     res.render('homepage', {
+    //                        pageData, loggedIn: false,
+    //                     })
+    //                 })
+    //         })
+    //         .catch(err => console.log(err))
+    // } else {
         // CODE TO RUN IF USER IS LOGGED IN WILL DISPLAY THE CURRENT BETS INTO THE ACTIVE BETS ON THE GAME CARDS
         async function getBets() {
             // const response = await Bet.findAll({
             //     // include: [{ model: Game }],
             // })
             const bets = Bet.findAll({
-                include: [{ model: User ,
-                    
-                attributes: ["username"]
-            }],
+                include: [{
+                    model: User,
+
+                    attributes: ["username"]
+                }],
             })
             return bets
         }
@@ -95,17 +100,23 @@ router.get('/', (req, res) => {
                                 const games = JSON.parse(data1)
                                 const news = JSON.parse(data2)
                                 const bet = JSON.parse(dataBet)
-                            
-                                console.log(bet)
+
+                                const pageData =
+                                {
+                                    games, news, bet
+                                }
+
+
+                                console.log(pageData)
                                 res.render('homepage', {
-                                    news, games, bet, loggedIn: true,
+                                    pageData, loggedIn: req.session.user_id,
                                 })
                             })
                     })
             })
 
             .catch(err => console.log(err))
-    }
+        // }
 
 });
 

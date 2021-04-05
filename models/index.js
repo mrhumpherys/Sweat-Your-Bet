@@ -7,11 +7,14 @@ User.hasMany(Bet,{
   foreignKey: 'host_id'
 });
 Bet.hasMany(User,{
+  foreignKey: "challenger_id",
   foreignKey: "challenger_id"
 })
 Bet.belongsTo(User,{
-  foreignKey: "host_id"
+  foreignKey: "host_id",
+  foreignKey: "challenger_id"
 })
+
 
 
 module.exports = { User, Bet, Game };
