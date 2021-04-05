@@ -20,6 +20,7 @@ router.get('/bets', asyncHandler(async (req, res) => {
 // prettier-ignore
 router.get('/games', asyncHandler(async (req, res) => {
   await Game.bulkCreate(JSON.parse(fs.readFileSync(getUrl('game'))));
+  res.json(await Game.findAll());
 }));
 
 module.exports = router;

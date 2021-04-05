@@ -40,5 +40,4 @@ app.use(require('./controllers/'));
 // app.listen(PORT, () => console.log(`Now listening at http://localhost:${PORT}`));
 sequelize.sync({ force: false }).then(async () => {
   app.listen(PORT, () => console.log(`Now listening at http://localhost:${PORT}`));
-  // seed();
 });
