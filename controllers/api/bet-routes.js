@@ -13,6 +13,7 @@ router.post('/', asyncHandler(async (req, res) => {
   let bet = await Bet.create({ host_id, wager, game_id, pick_team_id });
 
   let user = await User.findByPk(host_id);
+  //* WHETHER OR NOT TO DECREMENT, ALERT USER IF INSUFFICIENT FUNDS
   user.decrement('balance', { by: wager });
   res.json(bet);
 }));
