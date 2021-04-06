@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "host_id": 4,
+    "wager": 17,
+    "game_id": 16191,
+    "pick_team_id": "3"
+  },
+  {
+    "id": 2,
+    "host_id": 11,
+    "wager": 9,
+    "game_id": 16230,
+    "pick_team_id": "13"
+  },
+  {
+    "id": 3,
+    "host_id": 8,
+    "wager": 18,
+    "game_id": 16235,
+    "pick_team_id": "3"
+  }
+]
