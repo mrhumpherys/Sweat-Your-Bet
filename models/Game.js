@@ -3,30 +3,58 @@ const sequelize = require('../config/connection');
 
 class Game extends Model {}
 
-Game.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
-      autoIncrement: true,
+Game.init({
+    GameID: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        allowNull: false,
     },
-    date_time: DataTypes.DATE,
-    status: DataTypes.STRING,
-    home_team_id: DataTypes.INTEGER,
-    home_team: DataTypes.STRING,
-    home_team_score: DataTypes.INTEGER,
-    away_team_id: DataTypes.INTEGER,
-    away_team_score: DataTypes.INTEGER,
-    home_team_win: DataTypes.BOOLEAN,
-  },
-  {
+    Status: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    DateTime: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+    HomeTeam: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    HomeTeamID: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    HomeTeamScore: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+    },
+    AwayTeam: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    AwayTeamID: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    AwayTeamScore: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+    },
+    GameEndDateTime: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    HomeTeamWin: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true
+    }
+}, {
     sequelize,
-    underscored: true,
-    timestamps: false,
-    tableName: 'game',
+    freezeTableName: true,
+    underscored: false,
     modelName: 'game',
-  }
-);
+    
+});
 
 module.exports = Game;

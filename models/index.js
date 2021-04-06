@@ -6,52 +6,73 @@ const Game = require('./Game');
 //! |     BET-> GAME           |
 //! ----------------------------
 
+// User.hasMany(Bet, {
+//   foreignKey: 'host_id',
+//   foreignKey: 'challenger_id',
+//   onDelete: 'CASCADE'
+// });
+// Bet.belongsToMany(User, {
+//   foreignKey: 'host_id',
+//   foreignKey: 'challenger_id',
+//   through: 'userBet'
+// });
+
 Game.hasMany(Bet, {
   foreignKey: 'game_id',
-  sourceKey: 'id',
-  onDelete: 'CASCADE',
   constraints: false,
 });
 
 Bet.belongsTo(Game, {
   foreignKey: 'game_id',
-  sourceKey: 'id',
-  onDelete: 'CASCADE',
   constraints: false,
+  through: 'gameBet'
 });
 
-//! ----------------------------
-//! |   USER -> BET  (host_id) |
-//! ----------------------------
+// ! ----------------------------
+// ! |   USER -> BET  (host_id) |
+// ! ----------------------------
 
-// User.hasMany(Bet, {
+User.hasMany(Bet, {
+  foreignKey: 'host_id',
+  foreignKey: 'challenger_id',
+  sourceKey: 'id',
+});
+
+Bet.belongsTo(User, {
+  foreignKey: 'user_id',
+  foreignKey: 'challenger_id',
+  sourceKey: 'id',
+
+  
+});
+
+// Bet.belongsToMany(User, {
 //   foreignKey: 'host_id',
+//   foreignKey: 'challenger_id',
 //   sourceKey: 'id',
-//   onDelete: 'CASCADE',
+//   through: 'userBet',
+//   as: 'userBets'
 // });
 
-// Bet.belongsTo(User, {
-//   foreignKey: 'host_id',
-//   sourceKey: 'id',
-//   onDelete: 'CASCADE',
-// });
 
-//! ----------------------------------
-//! |   USER -> BET  (challenger_id) |
-//! ----------------------------------
+
+// ! ----------------------------------
+// ! |   USER -> BET  (challenger_id) |
+// ! ----------------------------------
 
 // User.hasMany(Bet, {
 //   foreignKey: 'challenger_id',
+//   foreignKey: 'host_id',
 //   sourceKey: 'id',
-//   onDelete: 'CASCADE',
 //   constraints: false,
 // });
 
-// Bet.belongsTo(User, {
+// Bet.belongsToMany(User, {
 //   foreignKey: 'challenger_id',
+//   foreignKey: 'host_id',
 //   sourceKey: 'id',
-//   onDelete: 'CASCADE',
 //   constraints: false,
+//   through: 'userBet'
 // });
 
 

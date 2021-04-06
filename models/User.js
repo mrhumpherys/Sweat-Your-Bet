@@ -33,7 +33,7 @@ User.init(
     },
     balance: {
       type: DataTypes.INTEGER,
-      defaultValue: 100,
+      allowNull: false,
     },
   },
   {
