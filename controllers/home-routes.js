@@ -5,7 +5,7 @@ const moment = require('moment');
 const e = require('express');
 
 router.get('/', (req, res) => {
-    let logged = req.session.loggedIn
+    //let logged = req.session.loggedIn
     // if (!logged) {
     //     async function getNews() {
     //         let response = await
@@ -49,17 +49,17 @@ router.get('/', (req, res) => {
     //         })
     //         .catch(err => console.log(err))
     // } else {
-        // CODE TO RUN IF USER IS LOGGED IN WILL DISPLAY THE CURRENT BETS INTO THE ACTIVE BETS ON THE GAME CARDS
+        // // CODE TO RUN IF USER IS LOGGED IN WILL DISPLAY THE CURRENT BETS INTO THE ACTIVE BETS ON THE GAME CARDS
         async function getBets() {
             // const response = await Bet.findAll({
             //     // include: [{ model: Game }],
             // })
             const bets = Bet.findAll({
-                include: [{
-                    model: User,
+                // include: [{
+                //     model: User,
 
-                    attributes: ["username"]
-                }],
+                //     attributes: ["username"]
+                // }],
             })
             return bets
         }
@@ -99,7 +99,26 @@ router.get('/', (req, res) => {
                                 const games = JSON.parse(data1)
                                 const news = JSON.parse(data2)
                                 const bet = JSON.parse(dataBet)
-
+                                cleaned = games.map(d => {
+                                              let HomeTeamWin;
+                                              if (d.Status == 'Final') {
+                                                HomeTeamWin = d.HomeTeamScore > d.AwayTeamScore;
+                                              }
+                                              return {
+                                                GameID: d.GameID,
+                                                Status: d.Status,
+                                                DateTime: d.DateTime,
+                                                HomeTeamID: d.HomeTeamID,
+                                                HomeTeam: d.HomeTeam,
+                                                HomeTeamScore: d.HomeTeamScore,
+                                                HomeTeamWin: HomeTeamWin,
+                                                AwayTeamID: d.AwayTeamID,
+                                                AwayTeam: d.AwayTeam,
+                                                AwayTeamScore: d.AwayTeamScore,
+                                                GameEndDateTime: d.GameEndDateTime,
+                                              };
+                                            });
+                                             Game.bulkCreate(cleaned);
                                 const pageData =
                                 {
                                     games, news, bet
@@ -115,67 +134,67 @@ router.get('/', (req, res) => {
             })
 
             .catch(err => console.log(err))
-        // }
-  async function getNews() {
-    let response = await fetch(`https://fly.sportsdata.io/v3/nba/scores/json/News`, {
-      method: 'GET',
-      headers: {
-        'Ocp-Apim-Subscription-Key': process.env.KEY,
-      },
-    });
-    return response;
-  }
-  async function getGames() {
-    date = moment(new Date()).format('YYYY-MM-DD');
-    let response = await fetch(`https://fly.sportsdata.io/v3/nba/scores/json/GamesByDate/${date}`, {
-      method: 'GET',
-      headers: {
-        'Ocp-Apim-Subscription-Key': process.env.KEY,
-      },
-    });
-    return response;
-  }
-  getGames()
-    .then(res => res.json())
-    .then(data => {
-      const data1 = JSON.stringify(data);
-      getNews()
-        .then(res => res.json())
-        .then(newsData => {
-          const data2 = JSON.stringify(newsData);
-          const games = JSON.parse(data1);
-          const news = JSON.parse(data2);
+        // // }
+  // async function getNews() {
+  //   let response = await fetch(`https://fly.sportsdata.io/v3/nba/scores/json/News`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Ocp-Apim-Subscription-Key': process.env.KEY,
+  //     },
+  //   });
+  //   return response;
+  // }
+  // async function getGames() {
+  //   date = moment(new Date()).format('YYYY-MM-DD');
+  //   let response = await fetch(`https://fly.sportsdata.io/v3/nba/scores/json/GamesByDate/${date}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Ocp-Apim-Subscription-Key': process.env.KEY,
+  //     },
+  //   });
+  //   return response;
+  // }
+  // getGames()
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     const data1 = JSON.stringify(data);
+  //     getNews()
+  //       .then(res => res.json())
+  //       .then(newsData => {
+  //         const data2 = JSON.stringify(newsData);
+  //         const games = JSON.parse(data1);
+  //         const news = JSON.parse(data2);
 
-          cleaned = games.map(d => {
-            let HomeTeamWin;
-            if (d.Status == 'Final') {
-              HomeTeamWin = d.HomeTeamScore > d.AwayTeamScore;
-            }
-            return {
-              GameID: d.GameID,
-              Status: d.Status,
-              DateTime: d.DateTime,
-              HomeTeamID: d.HomeTeamID,
-              HomeTeam: d.HomeTeam,
-              HomeTeamScore: d.HomeTeamScore,
-              HomeTeamWin: HomeTeamWin,
-              AwayTeamID: d.AwayTeamID,
-              AwayTeam: d.AwayTeam,
-              AwayTeamScore: d.AwayTeamScore,
-              GameEndDateTime: d.GameEndDateTime,
-            };
-          });
+  //         cleaned = games.map(d => {
+  //           let HomeTeamWin;
+  //           if (d.Status == 'Final') {
+  //             HomeTeamWin = d.HomeTeamScore > d.AwayTeamScore;
+  //           }
+  //           return {
+  //             GameID: d.GameID,
+  //             Status: d.Status,
+  //             DateTime: d.DateTime,
+  //             HomeTeamID: d.HomeTeamID,
+  //             HomeTeam: d.HomeTeam,
+  //             HomeTeamScore: d.HomeTeamScore,
+  //             HomeTeamWin: HomeTeamWin,
+  //             AwayTeamID: d.AwayTeamID,
+  //             AwayTeam: d.AwayTeam,
+  //             AwayTeamScore: d.AwayTeamScore,
+  //             GameEndDateTime: d.GameEndDateTime,
+  //           };
+  //         });
 
-          // Game.bulkCreate(cleaned);
+  //         // Game.bulkCreate(cleaned);
 
-          res.render('homepage', {
-            news,
-            games,
-            loggedIn: req.session.loggedIn,
-          });
-        });
-    })
-    .catch(err => console.log(err));
+  //         res.render('homepage', {
+  //           news,
+  //           games,
+  //           loggedIn: req.session.loggedIn,
+  //         });
+  //       });
+  //   })
+  //   .catch(err => console.log(err));
 });
 
 router.get('/bet/:id', (req, res) => {

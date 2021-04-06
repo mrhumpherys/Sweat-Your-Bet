@@ -16,18 +16,10 @@ Bet.init(
     host_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
     },
     challenger_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
     },
     wager: {
       type: DataTypes.INTEGER,

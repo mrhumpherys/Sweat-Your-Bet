@@ -18,15 +18,15 @@ router.post('/', asyncHandler(async (req, res) => {
     pick_team_id
   } = req.body;
 
-  host_id = req.session.user_id;
-  wager = req.body.wager;
-  game_id = req.body.game_id;
-  pickTeamID = req.body.pickTeamID;
+  // host_id = req.session.user_id;
+  // wager = req.body.wager;
+  // game_id = req.body.game_id;
+  // pickTeamID = req.body.pickTeamID;
   Bet.create({
     host_id,
     wager,
     game_id,
-    pickTeamID,
+    pick_team_id,
   }).
     then(dbBetData => res.json(dbBetData))
     .catch(err => {
@@ -62,8 +62,8 @@ router.get('/', asyncHandler(async (req, res) => {
         {
           model: Game
         },
-        {
-          model: User,}
+        // {
+        //   model: User,}
           
       ]
     })
@@ -91,13 +91,9 @@ router.get('/', asyncHandler(async (req, res) => {
 //! ----------------------------------------
 // prettier-ignore
 router.get('/:id', asyncHandler(async (req, res) => {
-<<<<<<< HEAD
-  res.json(await Bet.findByPk(req.params.id, { include: Game }));
-=======
   res.json(await Bet.findByPk(req.params.id, {
     include: Game
   }));
->>>>>>> feature/stash
 }));
 
 //! ----------------------------------------
@@ -106,12 +102,6 @@ router.get('/:id', asyncHandler(async (req, res) => {
 //? PUT REQUEST TO ACCEPT A BET
 // prettier-ignore
 router.put('/:id', asyncHandler(async (req, res) => {
-<<<<<<< HEAD
-  // let challenger_id = req.session.user_id;
-  // req.body = challenger
-  let bet = await Bet.update({ challenger_id: req.session.user_id ? req.session.user_id : req.body.user_id }, { where: { id: req.params.id } });
-  res.json(bet);
-=======
   let bet = await Bet.findByPk(req.params.id);
   let challenger_id = req.session.user_id ? req.session.user_id : req.body.user_id ? req.body.user_id : 1;
 
@@ -129,7 +119,6 @@ router.put('/:id', asyncHandler(async (req, res) => {
   } else res.json({
     message: "Unable to accept bet, insufficent funds!"
   });
->>>>>>> feature/stash
 
   // ONCE SESSION IS UPDATED
   // bet.update({challenger_id: req.session.user_id}
@@ -140,16 +129,6 @@ router.put('/:id', asyncHandler(async (req, res) => {
 //! ----------------------------------------
 // prettier-ignore
 router.delete('/:id', asyncHandler(async (req, res) => {
-<<<<<<< HEAD
-  await Bet.destroy({ where: { id: req.params.id } });
-  res.json({ message: `Bet with id: ${req.params.id} deleted successfully` });
-}));
-
-module.exports = router;
-
-
-
-=======
   await Bet.destroy({
     where: {
       id: req.params.id
@@ -161,4 +140,3 @@ module.exports = router;
 }));
 
 module.exports = router;
->>>>>>> feature/stash

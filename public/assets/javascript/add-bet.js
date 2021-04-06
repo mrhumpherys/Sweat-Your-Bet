@@ -5,17 +5,17 @@ async function addBetHandler(event) {
     event.preventDefault();
     console.log(" HERE BITCH")
     let game_id = event.target.getAttribute("data-GameID");
-    let pickTeamID = document.querySelector(`.winner-${game_id}`).value
+    let pick_team_id = document.querySelector(`.winner-${game_id}`).value
     let wager = document.querySelector(`.wager-${game_id}`).value
 
-    console.log(game_id, parseInt(pickTeamID), wager)
+    console.log(game_id, parseInt(pick_team_id), wager)
     const response = await fetch(`/api/bets/`, {
 
         method: 'POST',
         body: JSON.stringify({
             wager,
             game_id,
-            pickTeamID
+            pick_team_id
         }),
         headers: {
             'Content-Type': 'application/json'
@@ -24,9 +24,14 @@ async function addBetHandler(event) {
 
     if (response.ok) {
         document.location.reload();
+        
+        
     } else {
         alert(response.statusText);
+        
     }
+    
+    
 
 
 

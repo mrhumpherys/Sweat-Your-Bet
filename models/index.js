@@ -18,33 +18,33 @@ const Game = require('./Game');
 // });
 
 Game.hasMany(Bet, {
-  foreignKey: 'game_id',
+  foreignKey: 'GameID',
   constraints: false,
 });
 
 Bet.belongsTo(Game, {
-  foreignKey: 'game_id',
+  foreignKey: 'GameID',
   constraints: false,
-  through: 'gameBet'
+  // through: 'gameBet'
 });
 
 // ! ----------------------------
 // ! |   USER -> BET  (host_id) |
 // ! ----------------------------
 
-User.hasMany(Bet, {
-  foreignKey: 'host_id',
-  foreignKey: 'challenger_id',
-  sourceKey: 'id',
-});
+// User.hasMany(Bet, {
+//   foreignKey: 'host_id',
+//   foreignKey: 'challenger_id',
+//   sourceKey: 'id',
+// });
 
-Bet.belongsTo(User, {
-  foreignKey: 'user_id',
-  foreignKey: 'challenger_id',
-  sourceKey: 'id',
+// Bet.belongsTo(User, {
+//   foreignKey: 'user_id',
+//   foreignKey: 'challenger_id',
+//   sourceKey: 'id',
 
   
-});
+// });
 
 // Bet.belongsToMany(User, {
 //   foreignKey: 'host_id',
