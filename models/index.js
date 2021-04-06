@@ -12,9 +12,6 @@ Game.hasMany(Bet, {
   onDelete: 'CASCADE',
   constraints: false,
 });
-Bet.hasMany(User, {
-  foreignKey: 'bet_id',
-});
 
 Bet.belongsTo(Game, {
   foreignKey: 'game_id',
