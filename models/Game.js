@@ -4,45 +4,39 @@ const sequelize = require('../config/connection');
 class Game extends Model {}
 
 Game.init({
-    game_id: {
+    GameID: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
     },
-    status: {
+    Status: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    date_time: {
+    DateTime: {
         type: DataTypes.DATE,
         allowNull: false
     },
-    hometeam_id: {
+    HomeTeamID: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    hometeam: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    awayteam_id: {
+    AwayTeamID: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    away_team_score: {
+    AwayTeamScore: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         defaultValue: 0
     },
-    home_team_score: {
+    HomeTeamScore: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         defaultValue: 0
     }
 }, {
     sequelize,
     freezeTableName: true,
-    underscored: true,
+    underscored: false,
     modelName: 'game',
     
 });

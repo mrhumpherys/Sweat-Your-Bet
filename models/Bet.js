@@ -41,10 +41,10 @@ Bet.init(
     // },
     game_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'game',
-        key: 'game_id',
+        key: 'GameID',
       },
     },
     pick_team_id: {
@@ -62,7 +62,7 @@ Bet.init(
   },
   {
     sequelize,
-    underscored: true,
+    underscored: false,
     timestamps: false,
     tableName: 'bet',
     modelName: 'bet',

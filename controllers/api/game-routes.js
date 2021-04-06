@@ -27,6 +27,30 @@ router.get('/:id', async (req, res) => {
   res.json(game);
 });
 
-router.post('/', async (req, res) => {});
+router.post('/', async (req, res) => {
+  Game.create({
+    GameID: req.body.GameID,
+    Status: req.body.Status,
+    DateTime: req.body.DateTime,
+    HomeTeamID: req.body.HomeTeamID,
+    AwayTeamID: req.body.AwayTeamID,
+    HomeTeamScore: req.body.HomeTeamScore,
+    AwayTeamScore: req.body.AwayTeamScore
+
+  })
+
+  game_id = req.body.game_id;
+
+  let { wager, game_id, pick_team_id } = req.body;
+
+  let user = await User.findByPk(host_id);
+  //* WHETHER OR NOT TO DECREMENT, ALERT USER IF INSUFFICIENT FUNDS
+  if (user.balance >= wager) {
+    bet = await Bet.create({ host_id, wager, game_id, pick_team_id });
+    user.decrement('balance', { by: wager });
+    res.json(bet);
+  } else res.json({ message: "Unable to process bet, insufficent funds" })
+  
+});
 
 module.exports = router;
