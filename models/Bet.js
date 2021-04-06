@@ -44,7 +44,7 @@ Bet.init(
       allowNull: false,
       references: {
         model: 'game',
-        key: 'id',
+        key: 'game_id',
       },
     },
     pick_team_id: {
