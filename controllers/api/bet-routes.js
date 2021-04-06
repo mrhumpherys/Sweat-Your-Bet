@@ -2,7 +2,6 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const { User, Bet, Game } = require('../../models');
 
-<<<<<<< HEAD
 //! ----------------------------------------
 //! |       (C)REATE NEW BET               |
 //! ----------------------------------------
@@ -10,19 +9,6 @@ const { User, Bet, Game } = require('../../models');
 router.post('/', asyncHandler(async (req, res) => {
   host_id = req.session.user_id ? req.session.user_id : req.body.user_id ? req.body.user_id : 1;
   let { wager, game_id, pick_team_id } = req.body;
-=======
-// Get all bets
-router.get("/", (req, res) => {
-  Bet.findAll({
-    // include: [{ model: Game }],
-  })
-    .then((dbBetData) => res.json(dbBetData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
->>>>>>> 29394cf0c4a39d4a6954ed956fb9dfb3d5f92167
 
   let bet = await Bet.create({ host_id, wager, game_id, pick_team_id });
 
