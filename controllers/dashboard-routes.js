@@ -62,6 +62,7 @@ router.get("/activeBets", (req, res) => {
     //    }
     //})
     res.render('activeBets', {
+        style: "style.css",
         loggedIn: req.session.loggedIn
     });
     return;
