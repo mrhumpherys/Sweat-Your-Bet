@@ -1,6 +1,8 @@
+const moment = require('moment');
+const fetch = require('node-fetch');
 let { User, Bet, Game } = require('../models/index');
-const fs = require('fs');
-const games = JSON.parse(fs.readFileSync('db/_data/game-data.json'));
+// const fs = require('fs');
+// const games = JSON.parse(fs.readFileSync('db/_data/game-data.json'));
 
 async function seed() {
   await User.create({
@@ -30,6 +32,18 @@ async function seed() {
 
   // console.log(bet);
 
+  date = moment(new Date()).format('YYYY-MM-DD');
+  response = await fetch(`https://fly.sportsdata.io/v3/nba/scores/json/GamesByDate/${date}`, {
+    method: 'GET',
+    headers: {
+      'Ocp-Apim-Subscription-Key': process.env.KEY,
+    },
+  });
+
+  games = await response.json();
+
+  console.log(games);
+
   cleaned = games.map(d => {
     let HomeTeamWin;
     if (d.Status == 'Final') {
@@ -37,16 +51,16 @@ async function seed() {
     }
     return {
       id: d.GameID,
-      Status: d.Status,
-      DateTime: d.DateTime,
-      HomeTeamID: d.HomeTeamID,
-      HomeTeam: d.HomeTeam,
-      HomeTeamScore: d.HomeTeamScore,
-      HomeTeamWin: HomeTeamWin,
-      AwayTeamID: d.AwayTeamID,
-      AwayTeam: d.AwayTeam,
-      AwayTeamScore: d.AwayTeamScore,
-      GameEndDateTime: d.GameEndDateTime,
+      status: d.Status,
+      date_time: d.DateTime,
+      home_team_id: d.HomeTeamID,
+      home_team: d.HomeTeam,
+      home_team_score: d.HomeTeamScore,
+      home_team_win: HomeTeamWin,
+      away_team_id: d.AwayTeamID,
+      away_team: d.AwayTeam,
+      away_team_score: d.AwayTeamScore,
+      game_end_date_time: d.GameEndDateTime,
     };
   });
 
@@ -55,19 +69,22 @@ async function seed() {
   await Bet.create({
     host_id: 1,
     wager: 20,
-    game_id: 16188,
+    game_id: 16240,
+    pick_team_id: 1,
   });
 
   await Bet.create({
     host_id: 2,
     wager: 35,
-    game_id: 16189,
+    game_id: 16238,
+    pick_team_id: 2,
   });
 
   await Bet.create({
     host_id: 3,
     wager: 40,
-    game_id: 16190,
+    game_id: 16236,
+    pick_team_id: 4,
   });
 }
 
