@@ -38,6 +38,16 @@ app.use(express.static(path.join(__dirname, './public')));
 app.use(require('./controllers/'));
 
 // app.listen(PORT, () => console.log(`Now listening at http://localhost:${PORT}`));
+<<<<<<< HEAD
 sequelize.sync({ force: false }).then(async () => {
   app.listen(PORT, () => console.log(`Now listening at http://localhost:${PORT}`));
+=======
+// sequelize.sync({ force: false }).then(async () => {
+//   app.listen(PORT, () => console.log(`Now listening at http://localhost:${PORT}`));
+//   // seed();
+// });
+
+sequelize.sync({ force: false}).then(() => {
+  app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
+>>>>>>> 29394cf0c4a39d4a6954ed956fb9dfb3d5f92167
 });

@@ -91,7 +91,7 @@
                         <div class="col-sm-12 time">{{format_date DateTime}} @ {{format_time DateTime}}</div>
                     </div>
 
-                    {{#if loggedIn}}
+                    
                     {{!-- TESTING ADDING ANOTHER ACCORDION FOR BETS --}}
                     <div class="d-flex col-12 justify-content-center table-text-mobile" id="accordion-{{@index}}">
                         <!-- START OF SINGLE GAME INFO DIV -->
@@ -198,7 +198,7 @@
                     </div>
                     <!-- END ACCORDION -->
                     {{!-- END TESTING --}}
-                    {{/if}}
+             
 
                     <!-- ACCORDION -->
                     <!-- NEED TO CHANGE THE IDS DYNAMICALLY FOR ACCORDION -->
@@ -212,7 +212,7 @@
                             <div class="d-flex flex-wrap col-sm-12 justify-content-end card-header"
                                 id="heading-{{GameID}}">
                                 <div class="d-flex col-sm-12 col-md-12 col-lg-3 flex-wrap justify-content-center">
-                                    <h5 class="mb-0 d-flex flex-wrap justify-conent-center col-sm-12 text-align-start">
+                                    <h5 class="mb-0 d-flex flex-wrap justify-content-center col-sm-12 text-align-start">
                                         <!-- NEED TO CHANGE THE COLLAPSE IDS DYNAMICALLY FOR ACCORDION -->
                                         <!--                                        THE ID HERE MUST MATCH BELOW -->
                                         <button
@@ -228,7 +228,7 @@
                             <!-- THE ID AND ARIA LABELS MUST MATCH THE ID FOR THE CARD -->
                             <!-- NEED TO CHANGE THE COLLAPSE IDS DYNAMICALLY FOR ACCORDION -->
                             <!--                                        THE ID HERE MUST MATCH ABOVE -->
-                            <div class="d-flex justify-content-center col-12 mobile">
+                            <div class="d-flex flex-wrap justify-content-center col-12 mobile">
                                 <div id="collapse-{{GameID}}" class="collapse" aria-labelledby="heading-{{GameID}}"
                                     data-parent="#accordion-{{GameID}}">
                                     <div
@@ -354,4 +354,6 @@
         </div>
     </div>
 </div>
+{{#if loggedIn}}
 <script src="./assets/javascript/add-bet.js"></script>
+{{/if}} 

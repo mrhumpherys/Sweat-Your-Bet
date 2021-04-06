@@ -2,6 +2,7 @@ const User = require('./User');
 const Bet = require('./Bet');
 const Game = require('./Game');
 
+<<<<<<< HEAD
 //! ----------------------------
 //! |     BET-> GAME           |
 //! ----------------------------
@@ -15,6 +16,18 @@ Game.hasMany(Bet, {
 Bet.hasMany(User, {
   foreignKey: 'bet_id',
 });
+=======
+//! TODO
+User.hasMany(Bet,{
+  foreignKey: 'bet_id'
+});
+Bet.hasMany(User,{
+  foreignKey: "bet_id"
+})
+Bet.belongsTo(User,{
+  foreignKey: "host_id"
+})
+>>>>>>> 29394cf0c4a39d4a6954ed956fb9dfb3d5f92167
 
 Bet.belongsTo(Game, {
   foreignKey: 'game_id',
