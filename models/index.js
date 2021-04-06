@@ -38,12 +38,23 @@ User.hasMany(Bet, {
   sourceKey: 'id',
 });
 
-Bet.belongsToMany(User, {
-  foreignKey: 'host_id',
+Bet.belongsTo(User, {
+  foreignKey: 'user_id',
   foreignKey: 'challenger_id',
   sourceKey: 'id',
-  through: 'userBet'
+
+  
 });
+
+// Bet.belongsToMany(User, {
+//   foreignKey: 'host_id',
+//   foreignKey: 'challenger_id',
+//   sourceKey: 'id',
+//   through: 'userBet',
+//   as: 'userBets'
+// });
+
+
 
 // ! ----------------------------------
 // ! |   USER -> BET  (challenger_id) |

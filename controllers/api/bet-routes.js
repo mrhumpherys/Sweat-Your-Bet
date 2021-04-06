@@ -42,34 +42,33 @@ router.post('/', asyncHandler(async (req, res) => {
 //! ----------------------------------------
 // prettier-ignore
 router.get('/', asyncHandler(async (req, res) => {
-  // res.json(await Bet.findAll({
-  //     include: [
-  //       {
-  //         model: Game
-  //       },
-  //       {
-  //         model: User,
-  //         attributes: ['username'] 
-  //     },
-  //     ]
-  //   })
-  // );
-
-  res.json(await Game.findAll(
-    {
+  res.json(await Bet.findAll({
       include: [
         {
-          model: Bet,
-          include: {
-            model: User,
-            attributes: ['username']
-          }
+          model: Game
+        },
+        {
+          model: User,}
           
-        }
       ]
-  }
-  )
-)
+    })
+  );
+
+//   res.json(await Game.findAll(
+//     {
+//       include: [
+//         {
+//           model: Bet,
+//           include: {
+//             model: User,
+//             attributes: ['username']
+//           }
+          
+//         }
+//       ]
+//   }
+//   )
+// )
 }));
 
 //! ----------------------------------------

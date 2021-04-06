@@ -54,7 +54,7 @@ router.get('/', (req, res) => {
             };
           });
 
-          Game.bulkCreate(cleaned);
+          // Game.bulkCreate(cleaned);
 
           res.render('homepage', {
             news,
