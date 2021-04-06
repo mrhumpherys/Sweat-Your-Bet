@@ -12,35 +12,58 @@ CREATE TABLE Game (
     FOREIGN KEY(team2_id) REFERENCES Team(id)
 );
 */
-//! TODO
+!TODO
 
-// const { Model, DataTypes } = require('sequelize');
-// const sequelize = require('../config/connection');
+const {
+    Model,
+    DataTypes
+} = require('sequelize');
+const sequelize = require('../config/connection');
 
-// class Game extends Model {}
+class Game extends Model {}
 
-// Game.init(
-//   {
-//     id: {
-//       type: DataTypes.INTEGER,
-//       primaryKey: true,
-//       allowNull: false,
-//       autoIncrement: true,
-//     },
-//     DateTime: DataTypes.DATE,
-//     Status: DataTypes.STRING,
-//     HomeTeamID: DataTypes.INTEGER,
-//     HomeTeam: DataTypes.STRING,
-//     AwayTeamID: DataTypes.INTEGER,
-//     AwayTeamScore: DataTypes.INTEGER,
-//     HomeTeamScore: DataTypes.INTEGER,
-//     HomeTeamWin: DataTypes.BOOLEAN,
-//   },
-//   {
-//     sequelize,
-//     freezeTableName: true,
-//     modelName: 'game',
-//   }
-// );
+Game.init({
+    GameID: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        allowNull: false,
+    },
+    Status: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    DateTime: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+    HomeTeamID: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    HomeTeam: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    AwayTeamID: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    AwayTeamScore: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+    },
+    HomeTeamScore: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+    }
+}, {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'game',
+    
+});
 
-// module.exports = Game;
+module.exports = Game;
