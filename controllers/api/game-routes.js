@@ -33,23 +33,32 @@ router.post('/', async (req, res) => {
     Status: req.body.Status,
     DateTime: req.body.DateTime,
     HomeTeamID: req.body.HomeTeamID,
-    AwayTeamID: req.body.AwayTeamID,
+    HomeTeam: req.body.HomeTeam,
     HomeTeamScore: req.body.HomeTeamScore,
-    AwayTeamScore: req.body.AwayTeamScore
-
+    HomeTeamWin: null,
+    AwayTeamID: req.body.AwayTeamID,
+    AwayTeam: req.body.AwayTeam,
+    AwayTeamScore: req.body.AwayTeamScore,
+    GameEndDateTime: req.body.GameEndDateTime,
   })
+  .then(daGameData => {
+    res.json(daGameData);
+  })
+  .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+  });
+  // game_id = req.body.game_id;
 
-  game_id = req.body.game_id;
+  // let { wager, game_id, pick_team_id } = req.body;
 
-  let { wager, game_id, pick_team_id } = req.body;
-
-  let user = await User.findByPk(host_id);
-  //* WHETHER OR NOT TO DECREMENT, ALERT USER IF INSUFFICIENT FUNDS
-  if (user.balance >= wager) {
-    bet = await Bet.create({ host_id, wager, game_id, pick_team_id });
-    user.decrement('balance', { by: wager });
-    res.json(bet);
-  } else res.json({ message: "Unable to process bet, insufficent funds" })
+  // let user = await User.findByPk(host_id);
+  // //* WHETHER OR NOT TO DECREMENT, ALERT USER IF INSUFFICIENT FUNDS
+  // if (user.balance >= wager) {
+  //   bet = await Bet.create({ host_id, wager, game_id, pick_team_id });
+  //   user.decrement('balance', { by: wager });
+  //   res.json(bet);
+  // } else res.json({ message: "Unable to process bet, insufficent funds" })
   
 });
 
