@@ -40,7 +40,7 @@ router.get('/', (req, res) => {
               HomeTeamWin = d.HomeTeamScore > d.AwayTeamScore;
             }
             return {
-              id: d.GameID,
+              GameID: d.GameID,
               Status: d.Status,
               DateTime: d.DateTime,
               HomeTeamID: d.HomeTeamID,

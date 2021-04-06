@@ -17,8 +17,20 @@ Game.init({
         type: DataTypes.DATE,
         allowNull: false
     },
+    HomeTeam: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     HomeTeamID: {
         type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    HomeTeamScore: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+    },
+    AwayTeam: {
+        type: DataTypes.STRING,
         allowNull: false
     },
     AwayTeamID: {
@@ -29,9 +41,13 @@ Game.init({
         type: DataTypes.INTEGER,
         defaultValue: 0
     },
-    HomeTeamScore: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0
+    GameEndDateTime: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    HomeTeamWin: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true
     }
 }, {
     sequelize,
