@@ -34,19 +34,19 @@ Bet.init(
       allowNull: true,
       primaryKey: true,
     },
-    // host_won: {
-    //   type: DataTypes.BOOLEAN,
-    //   allowNull: true,
-    //   defaultValue: null,
-    // },
-    game_id: {
-      type: DataTypes.INTEGER,
+    host_won: {
+      type: DataTypes.BOOLEAN,
       allowNull: true,
-      references: {
-        model: 'game',
-        key: 'GameID',
-      },
+      defaultValue: null,
     },
+    // game_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true,
+    //   references: {
+    //     model: 'game',
+    //     key: 'GameID',
+    //   },
+    // },
     pick_team_id: {
       type: DataTypes.STRING,
       allowNull: false,

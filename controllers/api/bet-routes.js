@@ -44,11 +44,12 @@ router.post('/', asyncHandler(async (req, res) => {
 router.get('/', asyncHandler(async (req, res) => {
   res.json(await Bet.findAll({
       include: [
-        {
-          model: Game
-        },
-        {
-          model: User,}
+        // {
+        //   model: Game
+        // },
+        // {
+        //   model: User,
+        //   attributes: ['username']}
           
       ]
     })
@@ -77,7 +78,7 @@ router.get('/', asyncHandler(async (req, res) => {
 // prettier-ignore
 router.get('/:id', asyncHandler(async (req, res) => {
   res.json(await Bet.findByPk(req.params.id, {
-    include: Game
+    // include: Game
   }));
 }));
 
